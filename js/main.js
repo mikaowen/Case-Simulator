@@ -21,7 +21,19 @@ setInterval(function() {
 			throw new Error("The tab variable has an invalid value.");
 			break;
 	}
-}, 100);
+	
+	var tooltip = document.getElementById("tooltip");
+	if (tooltip != null && isNaN(Number(tooltip.innerHTML)) == false) {
+		var skin = inventory[Number(tooltip.innerHTML)+(inventoryPage*25)-1];
+		if (skin instanceof InventorySkin) {
+			var text = "<text>Name: "+skin.skin.displayName+"</text><br><text>Weapon: "+
+			skin.skin.gun+"</text><br><text>Skin: "+skin.skin.skin+"</text>";
+			tooltip.innerHTML=text;
+		} else {
+			tooltip.innerHTML="Empty slot";
+		}
+	}
+}, 0);
 
 $("#headerInventoryButton").click(function() {
 	openInventory();
@@ -33,13 +45,3 @@ $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
 });
 
-//Tooltip API
-(function($){
-	$(document).ready(function(){
-		$("[title]").style_my_tooltips({
-			tip_follows_cursor:true,
-			tip_delay_time:0,
-			tip_fade_speed:0,
-		});
-	});
-})(jQuery);

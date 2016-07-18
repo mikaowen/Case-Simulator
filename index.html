@@ -2,7 +2,7 @@
 	<head>
 		<!-- Load API and other and css libraries -->
 		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="css/style-my-tooltips.css"/>
+		<link rel="stylesheet" type="text/css" href="css/tooltip.css"/>
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	</head>
 	<body>
@@ -44,11 +44,11 @@
 				<table>
 					<tbody id="inventoryTable">
 						<tr>
-							<td title="1"><img id="inv1img" src=""></td>
-							<td title="1"><img id="inv2img" src=""></td>
-							<td title="1"><img id="inv3img" src=""></td>
-							<td title="1"><img id="inv4img" src=""></td>
-							<td title="1"><img id="inv5img" src=""></td>
+							<td><img id="inv1img" src="" data-tooltip title="1"/></td>
+							<td><img id="inv2img" src="" data-tooltip title="2"/></td>
+							<td><img id="inv3img" src="" data-tooltip title="3"/></td>
+							<td><img id="inv4img" src="" data-tooltip title="4"/></td>
+							<td><img id="inv5img" src="" data-tooltip title="5"/></td>
 						</tr>
 						<tr>
 							<td id="inv1bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -58,11 +58,11 @@
 							<td id="inv5bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv6img" src=""></td>
-							<td><img id="inv7img" src=""></td>
-							<td><img id="inv8img" src=""></td>
-							<td><img id="inv9img" src=""></td>
-							<td><img id="inv10img" src=""></td>
+							<td><img id="inv6img" src="" data-tooltip title="6"/></td>
+							<td><img id="inv7img" src="" data-tooltip title="7"/></td>
+							<td><img id="inv8img" src="" data-tooltip title="8"/></td>
+							<td><img id="inv9img" src="" data-tooltip title="9"/></td>
+							<td><img id="inv10img" src="" data-tooltip title="10"/></td>
 						</tr>
 						<tr>
 							<td id="inv6bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -72,11 +72,11 @@
 							<td id="inv10bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv11img" src=""></td>
-							<td><img id="inv12img" src=""></td>
-							<td><img id="inv13img" src=""></td>
-							<td><img id="inv14img" src=""></td>
-							<td><img id="inv15img" src=""></td>
+							<td><img id="inv11img" src="" data-tooltip title="11"/></td>
+							<td><img id="inv12img" src="" data-tooltip title="12"/></td>
+							<td><img id="inv13img" src="" data-tooltip title="13"/></td>
+							<td><img id="inv14img" src="" data-tooltip title="14"/></td>
+							<td><img id="inv15img" src="" data-tooltip title="15"/></td>
 						</tr>
 						<tr>
 							<td id="inv11bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -86,11 +86,11 @@
 							<td id="inv15bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv16img" src=""></td>
-							<td><img id="inv17img" src=""></td>
-							<td><img id="inv18img" src=""></td>
-							<td><img id="inv19img" src=""></td>
-							<td><img id="inv20img" src=""></td>
+							<td><img id="inv16img" src="" data-tooltip title="16"/></td>
+							<td><img id="inv17img" src="" data-tooltip title="17"/></td>
+							<td><img id="inv18img" src="" data-tooltip title="18"/></td>
+							<td><img id="inv19img" src="" data-tooltip title="19"/></td>
+							<td><img id="inv20img" src="" data-tooltip title="20"/></td>
 						</tr>
 						<tr>
 							<td id="inv16bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -100,11 +100,11 @@
 							<td id="inv20bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv21img" src=""></td>
-							<td><img id="inv22img" src=""></td>
-							<td><img id="inv23img" src=""></td>
-							<td><img id="inv24img" src=""></td>
-							<td><img id="inv25img" src=""></td>
+							<td><img id="inv21img" src="" data-tooltip title="21"/></td>
+							<td><img id="inv22img" src="" data-tooltip title="22"/></td>
+							<td><img id="inv23img" src="" data-tooltip title="23"/></td>
+							<td><img id="inv24img" src="" data-tooltip title="24"/></td>
+							<td><img id="inv25img" src="" data-tooltip title="25"/></td>
 						</tr>
 						<tr>
 							<td id="inv21bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -120,11 +120,10 @@
 				<text id="inventoryPageText"></text>
 			</div>
 		</div>
-		
 		<!-- Load API and other and js libraries -->
 		<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/jquery.style-my-tooltips.js"></script>
+		<script type="text/javascript" src="js/tooltip.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/item.js"></script>
 		<script type="text/javascript" src="js/inventory.js"></script>

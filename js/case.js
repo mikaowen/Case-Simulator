@@ -3,6 +3,7 @@ rollCaseName = "";
 rollingCaseSpeed = 1000000;
 rollingCaseTimer = 0;
 rollItems = [];
+numbers = [0.001,0.46,0.556,0.61,0.000001,0.0589,0.0006];
 
 function Case(name, price, key, image, items) {
 	this.items = items;
