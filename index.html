@@ -1,19 +1,140 @@
 <html>
 	<head>
-		<!-- Load API and other js and css libraries -->
-		<script type="text/javascript" src="js/item.js"></script>
-		<script type="text/javascript" src="js/itemDictionary.js"></script>
-		<script type="text/javascript" src="js/case.js"></script>
-		<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
-		<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
-		<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/bootstrap/npm.js"></script>
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap.min.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.css">
-		<link rel="stylesheet" type="text/css" href="css/bootstrap/bootstrap-theme.min.css">
+		<!-- Load API and other and css libraries -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
+		<link rel="stylesheet" type="text/css" href="css/style-my-tooltips.css"/>
+		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	</head>
 	<body>
+		<div class="row" id="header">
+			<table style="width:100%">
+				<tr>
+					<td id="headerInventoryButton" onclick="backgroundColor='#4d9900'">
+						<text class="text-center">Inventory</text>
+					</td>
+					<td id="headerShopButton">
+						<text class="text-center">Shop</text>
+					</td>
+					<td>
+						<text class="text-center">Inventory</text>
+					</td>
+				</tr>
+			</table>
+		</div>
+		<div class="row" id="main_container">
+			<!-- Case draw main_container -->
+			<div class="row" id="case_draw">
+				<table>
+					<tr>
+						<td>
+							<img src="" id="caseImage1"/>
+						</td>
+						<td>
+							<img src="" id="caseImage2"/>
+						</td>
+						<td>
+							<img src="" id="caseImage3"/>
+						</td>
+					</tr>
+				</table>
+			</div>
+			
+			<!-- Inventory main_container -->
+			<div class="row" id="inventory">
+				<table>
+					<tbody id="inventoryTable">
+						<tr>
+							<td title="1"><img id="inv1img" src=""></td>
+							<td title="1"><img id="inv2img" src=""></td>
+							<td title="1"><img id="inv3img" src=""></td>
+							<td title="1"><img id="inv4img" src=""></td>
+							<td title="1"><img id="inv5img" src=""></td>
+						</tr>
+						<tr>
+							<td id="inv1bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv2bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv3bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv4bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv5bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+						</tr>
+						<tr>
+							<td><img id="inv6img" src=""></td>
+							<td><img id="inv7img" src=""></td>
+							<td><img id="inv8img" src=""></td>
+							<td><img id="inv9img" src=""></td>
+							<td><img id="inv10img" src=""></td>
+						</tr>
+						<tr>
+							<td id="inv6bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv7bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv8bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv9bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv10bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+						</tr>
+						<tr>
+							<td><img id="inv11img" src=""></td>
+							<td><img id="inv12img" src=""></td>
+							<td><img id="inv13img" src=""></td>
+							<td><img id="inv14img" src=""></td>
+							<td><img id="inv15img" src=""></td>
+						</tr>
+						<tr>
+							<td id="inv11bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv12bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv13bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv14bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv15bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+						</tr>
+						<tr>
+							<td><img id="inv16img" src=""></td>
+							<td><img id="inv17img" src=""></td>
+							<td><img id="inv18img" src=""></td>
+							<td><img id="inv19img" src=""></td>
+							<td><img id="inv20img" src=""></td>
+						</tr>
+						<tr>
+							<td id="inv16bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv17bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv18bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv19bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv20bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+						</tr>
+						<tr>
+							<td><img id="inv21img" src=""></td>
+							<td><img id="inv22img" src=""></td>
+							<td><img id="inv23img" src=""></td>
+							<td><img id="inv24img" src=""></td>
+							<td><img id="inv25img" src=""></td>
+						</tr>
+						<tr>
+							<td id="inv21bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv22bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv23bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv24bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<td id="inv25bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+						</tr>
+					</tbody>
+				</table>
+				<button id="inventoryNextPage" class="inventory-button" onclick="inventoryNextPage()">Next Page</button>
+				<button id="inventoryLastPage" class="inventory-button" onclick="inventoryLastPage()">Last Page</button>
+				<text id="inventoryPageText"></text>
+			</div>
+		</div>
 		
+		<!-- Load API and other and js libraries -->
+		<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/jquery.style-my-tooltips.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/item.js"></script>
+		<script type="text/javascript" src="js/inventory.js"></script>
+		<script type="text/javascript" src="js/shop.js"></script>
+		<script type="text/javascript" src="js/case.js"></script>
+		<script type="text/javascript" src="js/itemDictionary.js"></script>
+		
+		<!-- Post initialization -->
+		<script>
+			openInventory();
+		</script>
 	</body>
 </html>

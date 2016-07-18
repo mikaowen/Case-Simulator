@@ -1,0 +1,3 @@
+function openShop() {
+	tab = "shop";
+}

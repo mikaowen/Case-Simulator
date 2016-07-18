@@ -1,4 +1,4 @@
-function Item(name, skin, rarity, collection, minFloat, maxFloat, statTrack, souvenir, gun, price) {
+function Skin(name, skin, rarity, collection, minFloat, maxFloat, statTrak, souvenir, gun, image, price) {
 	this.name = name;
 	this.skin = skin;
 	this.gun = gun;
@@ -6,9 +6,37 @@ function Item(name, skin, rarity, collection, minFloat, maxFloat, statTrack, sou
 	this.collection = collection;
 	this.minFloat = minFloat;
 	this.maxFloat = maxFloat;
-	this.statTrack = statTrack;
+	this.statTrak = statTrak;
 	this.souvenir = souvenir;
 	this.displayName = gun + " | " + skin;
 	this.price = price;
+	this.image = image;
+	this.st = false;
 	skins[name] = this;
+}
+
+function InventorySkin(skin, st) {
+	this.skin = skin;
+	if (st != null)
+		this.st = st;
+	else
+		this.st = false;
+	this.exterior = "NaN";
+	
+	this.flt = Number((Math.random() * (skin.minFloat - skin.maxFloat) + skin.maxFloat).toFixed(8));
+	
+	if (this.flt <= 0.07)
+		this.exterior = "Factory New";
+	else if (this.flt <= 0.15)
+		this.exterior = "Minimal Wear";
+	else if (this.flt <= 0.38)
+		this.exterior = "Field-Tested";
+	else if (this.flt <= 0.45)
+		this.exterior = "Well-Worn";
+	else if (this.flt <= 1)
+		this.exterior = "Battle-Scarred";
+	else {
+		throw new Error("Attempted to index a float value greater than 1.0");
+		return;
+	}
 }
