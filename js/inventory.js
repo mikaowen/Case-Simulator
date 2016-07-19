@@ -1,5 +1,5 @@
 inventory = [];
-inventoryPage = 0
+inventoryPage = 0;
 
 function inspectSkin(skin) {
 	

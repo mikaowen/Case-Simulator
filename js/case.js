@@ -67,10 +67,8 @@ function addItemToRollList() {
 	}
 	var count = cases[rollCaseName].t[t].length;
 	var skin = cases[rollCaseName].t[t][Math.floor(Math.random() * count)];
-	if (Math.random() <= 0.1 && skin.statTrak == true) {
+	if (Math.random() <= 0.1 && skin.statTrak == true)
 		skin.st = true;
-		console.log("yeey");
-	}
 		
 	rollItems.push(skin);
 	console.log(skin);

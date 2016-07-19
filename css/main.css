@@ -7,6 +7,56 @@ button {
 	opacity:1.0;
 }
 
+#tooltipHeader {
+	height:3em;
+	width:100%;
+	margin:0px;
+	line-height:3em;
+}
+
+#tooltip {
+	width:25%;
+	position:absolute;
+	background-color:#999966;
+	color:#ffffff;
+}
+
+#tooltip ul {
+	margin:1em 0em 1em 0em;
+}
+
+#tooltipFloat {
+	height:2em;
+	width:80%;
+	margin:0em 10% 1em 10%;
+	line-height:2em;
+}
+
+#tooltipFloatDivider {
+	width:1px;
+	border:1px solid red;
+	position:absolute;
+	top:0px;
+	bottom:0px;
+	margin-right:-100px;
+	z-index:1;
+}
+
+#tooltipFloat table {
+	border-collapse:collapse;
+	width:100%;
+	height:100%;
+	z-index:0;
+}
+
+#tooltipFloat table tbody tr td {
+	border:2px solid black;
+	background-color:white;
+	width:20%;
+	text-align:center;
+	color:green;
+}
+
 #header table tr td {
 	border:5px solid black;
 	background-color:#00b300;
@@ -74,11 +124,4 @@ button {
 #inventoryPageText {
 	position:relative;
 	right:-34.7%;
-}
-
-#tooltip {
-	position:absolute;
-	background:#DB2A64;
-	color:#ffffff;
-	padding:8px;
 }
