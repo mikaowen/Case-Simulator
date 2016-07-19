@@ -16,14 +16,12 @@ function drawInventory() {
 		document.getElementById("inv"+i+"img").src="";
 		document.getElementById("inv"+i+"bg").children[0].innerHTML="";
 		document.getElementById("inv"+i+"bg").children[2].innerHTML="";
-		document.getElementById("inv"+i+"img").parentElement.title="";
 	}
 	for (var i = 1; i < Math.min(inventory.length+1, 26); i++) {
 		var skin = inventory[i+(inventoryPage*25)-1];
 		document.getElementById("inv"+i+"img").src=skin.skin.image;
 		document.getElementById("inv"+i+"bg").children[0].innerHTML=skin.skin.gun;
 		document.getElementById("inv"+i+"bg").children[2].innerHTML=skin.skin.skin;
-		document.getElementById("inv"+i+"img").parentElement.title="Name: "+skin.skin.displayName+"Weapon: "+skin.skin.gun+"\nSkin: "+skin.skin.skin;
 		switch(inventory[i+(inventoryPage*25)-1].skin.rarity) {
 			case 0:
 				document.getElementById("inv"+i+"bg").style.backgroundColor="#ccccb3";

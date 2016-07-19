@@ -5,9 +5,11 @@ rollingCaseTimer = 0;
 rollItems = [];
 numbers = [0.001,0.46,0.556,0.61,0.000001,0.0589,0.0006];
 
-function Case(name, price, key, image, items) {
+function Case(name, price, key, image, logo, collection, items) {
 	this.items = items;
+	this.collection = collection;
 	this.name = name;
+	this.logo = logo;
 	this.price = price;
 	this.key = key;
 	this.image = image;
