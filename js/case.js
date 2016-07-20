@@ -3,7 +3,7 @@ rollCaseName = "";
 rollingCaseSpeed = 1000000;
 rollingCaseTimer = 0;
 rollItems = [];
-numbers = [0.001,0.46,0.556,0.61,0.000001,0.0589,0.0006];
+rollItemsST = [];
 
 function Case(name, price, key, image, logo, collection, items) {
 	this.items = items;
@@ -68,8 +68,9 @@ function addItemToRollList() {
 	var count = cases[rollCaseName].t[t].length;
 	var skin = cases[rollCaseName].t[t][Math.floor(Math.random() * count)];
 	if (Math.random() <= 0.1 && skin.statTrak == true)
-		skin.st = true;
-		
+		rollItemsST.splice(0, 0, true);
+	else
+		rollItemsST.splice(0, 0, false);
 	rollItems.push(skin);
 	console.log(skin);
 }
@@ -79,9 +80,11 @@ function rollCase(name) {
 		throw new Error("Attempted to find a case with the name '" + name + "' but it was not present");
 		return;
 	}
+	tab = "caseRoll"
 	rollCaseName = name;
 	rollingCaseSpeed = 1;
 	rollItems = [];
+	rollItemsST = [];
 	rollingCaseTimer = 0;
 	addItemToRollList();
 	addItemToRollList();
@@ -103,7 +106,7 @@ setInterval(function updateCaseRoll() {
 		rollingCaseSpeed++;
 		rollingCaseTimer = 0;
 		var skin = rollItems[rollItems.length-2];
-		addSkinToInventory(skin, skin.st);
+		addSkinToInventory(skin, rollItemsST[rollItemsST.length-2]);
 		inspectSkin(inventory[inventory.length-1]);
 		console.log("-----------------");
 		console.log(skin);

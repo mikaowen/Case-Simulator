@@ -11,18 +11,13 @@ function Skin(name, skin, rarity, collection, minFloat, maxFloat, statTrak, souv
 	this.displayName = gun + " | " + skin;
 	this.price = price;
 	this.image = image;
-	this.st = false;
 	skins[name] = this;
 }
 
 function InventorySkin(skin, st) {
 	this.skin = skin;
-	if (st != null)
-		this.st = st;
-	else
-		this.st = false;
+	this.st = st;
 	this.exterior = "NaN";
-	
 	this.flt = Number((Math.random() * (skin.minFloat - skin.maxFloat) + skin.maxFloat).toFixed(8));
 	
 	if (this.flt <= 0.07)

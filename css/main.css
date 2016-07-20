@@ -7,6 +7,11 @@ button {
 	opacity:1.0;
 }
 
+.caseDrawBorder {
+	background-color:blue;
+	position:relative;
+}
+
 #tooltipHeader {
 	height:3em;
 	width:100%;
@@ -26,35 +31,43 @@ button {
 }
 
 #tooltipFloat {
-	height:2em;
+	height:28px;
 	width:80%;
 	margin:0em 10% 1em 10%;
-	line-height:2em;
+	line-height:28px;
+}
+
+.tooltipFloatBG {
+	z-index:1;
+	background-color:red;
+	position:relative;
+	width:0px;
+}
+
+#tooltipFloat table tbody tr td text {
+	z-index:5;
+	position:relative;
 }
 
 #tooltipFloatDivider {
 	width:1px;
-	border:1px solid red;
-	position:absolute;
-	top:0px;
-	bottom:0px;
-	margin-right:-100px;
-	z-index:1;
+	border:1px solid blue;
+	z-index:6;
+	position:relative;
 }
 
 #tooltipFloat table {
-	border-collapse:collapse;
 	width:100%;
 	height:100%;
 	z-index:0;
+	border:2px solid black;
 }
 
 #tooltipFloat table tbody tr td {
-	border:2px solid black;
-	background-color:white;
-	width:20%;
+	background-color:#00b33c;
 	text-align:center;
-	color:green;
+	color:black;
+	border:1px solid black;
 }
 
 #header table tr td {
@@ -75,11 +88,13 @@ button {
 	background-color:#ccccb3;
 }
 
-#case_draw table {
-	margin:auto;
-	margin-top:200px;
-	height:200px;
-	width:600px;
+.inventoryST {
+	position:relative;
+	width:50px;
+	height:50px;
+	margin-right:-50px;
+	margin-bottom:-50px;
+	left:-50px;
 }
 
 #case_draw table tr td img {
@@ -95,17 +110,20 @@ button {
 
 #inventory table tr td {
 	border: 2px solid black;
-	font-size: 10px;
-	text-align: center;
+	font-size:10px;
+	text-align:center;
+	margin-right:-50px;
+	position:relative;
 }
 
-#inventory table tr td img {
+#inventory table tr td img:first-child {
 	width:100px;
 	height:100px;
+	position:relative;
 }
 
 .inventory-button {
-	position: relative;
+	position:relative;
 }
 
 #inventoryNextPage {

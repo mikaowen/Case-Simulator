@@ -1,5 +1,5 @@
 function disableAllTabs() {
-	document.getElementById("case_draw").style.display = "none";
+	document.getElementById("caseRollContainer").style.display = "none";
 	//document.getElementById("shop").style.display = "none";
 	document.getElementById("inventory").style.display = "none";
 }
@@ -16,8 +16,8 @@ setInterval(function() {
 		case "shop":
 			document.getElementById("shop").style.display = "inline";
 			break;
-		case "case_draw":
-			document.getElementById("case_draw").style.display = "inline";
+		case "caseRoll":
+			document.getElementById("caseRollContainer").style.display = "inline";
 			break;
 		default:
 			throw new Error("The tab variable has an invalid value.");
@@ -93,19 +93,36 @@ setInterval(function() {
 			"</text></li><li><text>Collection: The "+cases[skin.skin.collection].collection+
 			" collection</li><li><text>Exterior: "+skin.exterior+"</text></li><li><text>Float: "+
 			skin.flt+"</li></text><li><text>Price: $"+price+"</text></li></ul></div>"+
-			"<div id='tooltipFloat' class='row text-center'><table id='tooltipFloatTable'><tbody><tr><td><text>FN</text></td><td><text>MW</text></td>"+
-			"<td><text>FT</text></td><td><text>WW</text></td><td><text>BS</text></td></tr></tbody></table><div id='tooltipFloatDivider'></div></div>"
+			"<div id='tooltipFloat' class='row text-center'><table id='tooltipFloatTable'><div class='tooltipFloatBG'></div><div class='tooltipFloatBG'></div>"+
+			"<div id='tooltipFloatDivider'><tbody><tr><td style='width:7%;'><text>FN</text></td><td style='width:8%;'><text>MW</text></td>"+
+			"<td style='width:23%;'><text>FT</text></td><td style='width:7%;'>"+
+			"<text>WW</text></td><td style='width:55%;'><text>BS</text></td></tr></tbody></table></div>"
 			
+			//Editing the style of the elements via javascript
 			tooltip.innerHTML=text;
 			document.getElementById("tooltipHeader").style.backgroundColor=color;
 			var width = document.getElementById("tooltipFloatTable").offsetWidth;
 			var height = document.getElementById("tooltipFloatTable").offsetHeight;
 			var divider = document.getElementById("tooltipFloatDivider");
-			divider.style.height = height-2;
-			divider.style.marginRight -= Math.floor((skin.flt*100)*((width-2)/100))+"px";
+			var bg = document.getElementsByClassName("tooltipFloatBG");
+			divider.style.height=height-4;
+			divider.style.bottom="-"+(height-2)+"px";
+			divider.style.right="-"+Math.floor((skin.flt*100)*((width-4)/100))+"px";
+			divider.style.marginTop="-"+(height)+"px";
+			bg[0].style.height=height-4;
+			bg[1].style.height=height-4;
+			bg[1].style.width=Math.floor(((1-skin.skin.minFloat)*100)*((width-4)/100));
+			bg[0].style.width=Math.floor(((skin.skin.maxFloat)*100)*((width-4)/100));
+			bg[0].style.right="-2px"
+			bg[1].style.right="-"+((width-2)-Math.floor(((1-skin.skin.minFloat)*100)*((width-4)/100)))+"px";
+			bg[0].style.bottom="-"+(height-6)+"px";
+			bg[1].style.bottom="-"+(height-6)+"px";
+			bg[0].style.marginTop="-"+(height-4)+"px";
+			bg[1].style.marginTop="-"+(height-4)+"px";
 		} else {
 			tooltip.innerHTML="Empty slot";
 			tooltip.style.width="auto";
+			tooltip.style.padding="1em";
 		}
 	}
 }, 0);
@@ -116,6 +133,9 @@ $("#headerInventoryButton").click(function() {
 });
 $("#headerShopButton").click(function() {
 	openShop();
+});
+$("#caseButton").click(function() {
+	tab="caseRoll";
 });
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
