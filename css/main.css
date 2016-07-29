@@ -7,9 +7,14 @@ button {
 	opacity:1.0;
 }
 
+.col-lg-4 {
+	margin-top: -999999px;
+	margin-bottom: -999999px;
+}
+
 .caseDrawBorder {
-	background-color:blue;
-	position:relative;
+	background-color:#ccccb3;
+	z-index:5;
 }
 
 #tooltipHeader {
