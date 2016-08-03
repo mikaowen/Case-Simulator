@@ -7,15 +7,19 @@ function disableAllTabs() {
 //Main game clock
 setInterval(function() {
 	
+	document.getElementById("caseRollDisplay").style.width=(document.getElementById("caseRollDivider").offsetWidth-8)+"px";
+	document.getElementById("caseRollDisplay").style.height=(document.getElementById("caseRollDivider").offsetHeight-8)+"px";
+	
+	
 	//Current main_container tab
 	disableAllTabs();
 	switch(tab) {
 		case "inventory":
 			document.getElementById("inventory").style.display = "inline";
 			break;
-		case "shop":
-			document.getElementById("shop").style.display = "inline";
-			break;
+		//case "shop":
+			//document.getElementById("shop").style.display = "inline";
+			//break;
 		case "caseRoll":
 			document.getElementById("caseRollContainer").style.display = "inline";
 			break;
@@ -126,6 +130,10 @@ setInterval(function() {
 		}
 	}
 }, 0);
+
+function postInitialize() {
+	openInventory();
+}
 
 //jquery
 $("#headerInventoryButton").click(function() {
