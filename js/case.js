@@ -1,9 +1,7 @@
 cases = {};
 rollCaseName = "";
-rollingCaseSpeed = 1000000;
-rollingCaseTimer = 0;
 rollItems = [];
-numbers = [0.001,0.46,0.556,0.61,0.000001,0.0589,0.0006];
+rollItemsST = [];
 
 function Case(name, price, key, image, logo, collection, items) {
 	this.items = items;
@@ -45,12 +43,6 @@ function Case(name, price, key, image, logo, collection, items) {
 	cases[name] = this;
 }
 
-function updateCaseImages() {
-	document.getElementById("caseImage1").src = rollItems[rollItems.length-3].image;
-	document.getElementById("caseImage2").src = rollItems[rollItems.length-2].image;
-	document.getElementById("caseImage3").src = rollItems[rollItems.length-1].image;
-}
-
 function addItemToRollList() {
 	var t = 0;
 	var rand = Math.random();
@@ -68,44 +60,74 @@ function addItemToRollList() {
 	var count = cases[rollCaseName].t[t].length;
 	var skin = cases[rollCaseName].t[t][Math.floor(Math.random() * count)];
 	if (Math.random() <= 0.1 && skin.statTrak == true)
-		skin.st = true;
-		
+		rollItemsST.push(true);
+	else
+		rollItemsST.push(false);
 	rollItems.push(skin);
-	console.log(skin);
 }
 
 function rollCase(name) {
-	if (cases[name] == null) {
-		throw new Error("Attempted to find a case with the name '" + name + "' but it was not present");
-		return;
-	}
+	tab = "caseRoll";
 	rollCaseName = name;
-	rollingCaseSpeed = 1;
-	rollItems = [];
-	rollingCaseTimer = 0;
-	addItemToRollList();
-	addItemToRollList();
-	addItemToRollList();
+	window.setTimeout(function() {
+		if (cases[name] == null) {
+			throw new Error("Attempted to find a case with the name '" + name + "' but it was not present");
+			return;
+		}
+		rollItems = [];
+		rollItemsST = [];
+		var display = document.getElementById("caseRollDisplay");
+		var divider = document.getElementById("caseRollDivider");
+		var text = "";
+		display.innerHTML="";
+		for (var i = 0; i < 40; i++) {
+			addItemToRollList();
+			text += "<div style='border:2px solid black; background-size:100% 100%; position:absolute; height:100%; top:0; left:"+
+			(i*((divider.offsetWidth-8)/3))+"px; width:"+((divider.offsetWidth-8)/3)+"px; background-image: url("+rollItems[i].image+
+			");'><img src='graphics/misc/transparent.png' class='caseST'></img></div>";
+		}
+		display.innerHTML=text;
+		for (var i = 0; i < 40; i++) {
+			switch(rollItems[i].rarity) {
+				case 0:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ccccb3";
+					break;
+				case 1:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#809fff";
+					break;
+				case 2:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#0066ff";
+					break;
+				case 3:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#a64dff";
+					break;
+				case 4:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ff4dc4";
+					break;
+				case 5:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ff0000";
+					break;
+				case 6:
+					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ffff00";
+					break;
+			}
+			document.getElementById("caseRollDisplay").children[i].firstChild += ((i*display.firstChild.offsetWidth)+"px");
+			if (rollItemsST[i] == true)
+				document.getElementById("caseRollDisplay").children[i].firstChild.src = "graphics/misc/stattrak.png";
+		}
+	},1);
 }
 
-setInterval(function updateCaseRoll() {
-	if (rollingCaseSpeed < 40) {
-		rollingCaseTimer++;
-		if (Math.random() < 0.1) {
-			rollingCaseSpeed++;
+function finishCase() {
+	var i = 0;
+	$("#caseRollDisplay div").animate({
+		left: "-="+(document.getElementById("caseRollDisplay").lastChild.offsetLeft-(document.getElementById("caseRollDisplay").firstChild.offsetWidth*2))
+	}, 5000, function() {
+		i++;
+		if (i == 40) {
+			addSkinToInventory(rollItems[rollItems.length-2], rollItemsST[rollItemsST.length-2]);
+			//inspectSkin(inventory[inventory.length-1]);
+			rollCaseName = "unknown";
 		}
-		if (rollingCaseTimer >= rollingCaseSpeed) {
-			rollingCaseTimer = 0;
-			addItemToRollList();
-			updateCaseImages();
-		}
-	} else if (rollingCaseSpeed == 40) {
-		rollingCaseSpeed++;
-		rollingCaseTimer = 0;
-		var skin = rollItems[rollItems.length-2];
-		addSkinToInventory(skin, skin.st);
-		inspectSkin(inventory[inventory.length-1]);
-		console.log("-----------------");
-		console.log(skin);
-	}
-}, 10)
+	});
+}

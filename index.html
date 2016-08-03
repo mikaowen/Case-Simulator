@@ -5,49 +5,56 @@
 		<link rel="stylesheet" type="text/css" href="css/main.css"/>
 	</head>
 	<body>
-		<div class="row" id="header">
-			<table style="width:100%">
-				<tr>
-					<td id="headerInventoryButton" onclick="backgroundColor='#4d9900'">
-						<text class="text-center">Inventory</text>
-					</td>
-					<td id="headerShopButton">
-						<text class="text-center">Shop</text>
-					</td>
-					<td>
-						<text class="text-center">Inventory</text>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<div class="row" id="main_container">
-			<!-- Case draw main_container -->
-			<div class="row" id="case_draw">
-				<table>
+		<div class="row" id="header" style="height:10%; margin:0; padding:0; border:0; width:100%; position:relative; z-index:100;">
+			<table style="width:100%; padding:0; margin:0; height:100%;">
 					<tr>
-						<td>
-							<img src="" id="caseImage1"/>
+						<td id="headerInventoryButton">
+							<text class="text-center">Inventory</text>
 						</td>
-						<td>
-							<img src="" id="caseImage2"/>
+						<td id="headerShopButton">
+							<text class="text-center">Shop</text>
 						</td>
-						<td>
-							<img src="" id="caseImage3"/>
+						<td id="caseButton">
+							<text class="text-center">Inventory</text>
 						</td>
 					</tr>
-				</table>
+			</table>
+		</div>
+		
+		<div class="container-fluid" id="main_container" style="border:0; margin:0; padding:0;">
+			
+			<!-- Case roll container -->
+			<div class="row" id="caseRollContainer" style="padding:0; margin:0;">
+				<div class="col-md-4 col-xs-4" style="background-color:blue; width:30%; height:90%; padding:0; position:relative; z-index:2"></div>
+				<div class="col-md-4 col-xs-4" style="padding:0; width:40%; height:90%;">
+					<div class="row" style="background-color:blue; width:100%; height:40%; padding:0; margin:0; position:relative; z-index:2;"></div>
+					<div class="row" style="width:100%; height:20%; padding:0; margin:0; position:relative;">
+						<table id="caseRollDivider" style="width:100%; height:100%; position:relative; z-index:10;">
+							<tbody>
+								<tr>
+									<td style="width:50%; border:4px solid orange;"></td>
+									<td style="width:50%; border:4px solid orange;"></td>
+								</tr>
+							</tbody>
+						</table>
+						<div style="position:absolute; top:4px; left:4px; overflow:hidden;" id="caseRollDisplay">
+						</div>
+					</div>
+					<div class="row" style="background-color:blue; width:100%; height:40%; padding:0; margin:0; position:relative; z-index:2;"></div>
+				</div>
+				<div class="col-md-4 col-xs-4" style="background-color:blue; width:30%; height:90%; padding:0; position:relative; z-index:2;"></div>
 			</div>
 			
-			<!-- Inventory main_container -->
+			<!-- Inventory container -->
 			<div class="row" id="inventory">
 				<table>
 					<tbody id="inventoryTable">
 						<tr>
-							<td><img id="inv1img" src="" data-tooltip title="1"/></td>
-							<td><img id="inv2img" src="" data-tooltip title="2"/></td>
-							<td><img id="inv3img" src="" data-tooltip title="3"/></td>
-							<td><img id="inv4img" src="" data-tooltip title="4"/></td>
-							<td><img id="inv5img" src="" data-tooltip title="5"/></td>
+							<td><img id="inv1img" src="" data-tooltip title="1"/><img id="inv1st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="1"></img></td>
+							<td><img id="inv2img" src="" data-tooltip title="2"/><img id="inv2st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="2"></img></td>
+							<td><img id="inv3img" src="" data-tooltip title="3"/><img id="inv3st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="3"></img></td>
+							<td><img id="inv4img" src="" data-tooltip title="4"/><img id="inv4st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="4"></img></td>
+							<td><img id="inv5img" src="" data-tooltip title="5"/><img id="inv5st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="5"></img></td>
 						</tr>
 						<tr>
 							<td id="inv1bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -57,11 +64,11 @@
 							<td id="inv5bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv6img" src="" data-tooltip title="6"/></td>
-							<td><img id="inv7img" src="" data-tooltip title="7"/></td>
-							<td><img id="inv8img" src="" data-tooltip title="8"/></td>
-							<td><img id="inv9img" src="" data-tooltip title="9"/></td>
-							<td><img id="inv10img" src="" data-tooltip title="10"/></td>
+							<td><img id="inv6img" src="" data-tooltip title="6"/><img id="inv6st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="6"></img></td>
+							<td><img id="inv7img" src="" data-tooltip title="7"/><img id="inv7st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="7"></img></td>
+							<td><img id="inv8img" src="" data-tooltip title="8"/><img id="inv8st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="8"></img></td>
+							<td><img id="inv9img" src="" data-tooltip title="9"/><img id="inv9st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="9"></img></td>
+							<td><img id="inv10img" src="" data-tooltip title="10"/><img id="inv10st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="10"></img></td>
 						</tr>
 						<tr>
 							<td id="inv6bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -71,11 +78,11 @@
 							<td id="inv10bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv11img" src="" data-tooltip title="11"/></td>
-							<td><img id="inv12img" src="" data-tooltip title="12"/></td>
-							<td><img id="inv13img" src="" data-tooltip title="13"/></td>
-							<td><img id="inv14img" src="" data-tooltip title="14"/></td>
-							<td><img id="inv15img" src="" data-tooltip title="15"/></td>
+							<td><img id="inv11img" src="" data-tooltip title="11"/><img id="inv11st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="11"></img></td>
+							<td><img id="inv12img" src="" data-tooltip title="12"/><img id="inv12st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="12"></img></td>
+							<td><img id="inv13img" src="" data-tooltip title="13"/><img id="inv13st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="13"></img></td>
+							<td><img id="inv14img" src="" data-tooltip title="14"/><img id="inv14st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="14"></img></td>
+							<td><img id="inv15img" src="" data-tooltip title="15"/><img id="inv15st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="15"></img></td>
 						</tr>
 						<tr>
 							<td id="inv11bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -85,11 +92,11 @@
 							<td id="inv15bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv16img" src="" data-tooltip title="16"/></td>
-							<td><img id="inv17img" src="" data-tooltip title="17"/></td>
-							<td><img id="inv18img" src="" data-tooltip title="18"/></td>
-							<td><img id="inv19img" src="" data-tooltip title="19"/></td>
-							<td><img id="inv20img" src="" data-tooltip title="20"/></td>
+							<td><img id="inv16img" src="" data-tooltip title="16"/><img id="inv16st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="16"></img></td>
+							<td><img id="inv17img" src="" data-tooltip title="17"/><img id="inv17st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="17"></img></td>
+							<td><img id="inv18img" src="" data-tooltip title="18"/><img id="inv18st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="18"></img></td>
+							<td><img id="inv19img" src="" data-tooltip title="19"/><img id="inv19st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="19"></img></td>
+							<td><img id="inv20img" src="" data-tooltip title="20"/><img id="inv20st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="20"></img></td>
 						</tr>
 						<tr>
 							<td id="inv16bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -99,11 +106,11 @@
 							<td id="inv20bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv21img" src="" data-tooltip title="21"/></td>
-							<td><img id="inv22img" src="" data-tooltip title="22"/></td>
-							<td><img id="inv23img" src="" data-tooltip title="23"/></td>
-							<td><img id="inv24img" src="" data-tooltip title="24"/></td>
-							<td><img id="inv25img" src="" data-tooltip title="25"/></td>
+							<td><img id="inv21img" src="" data-tooltip title="21"/><img id="inv21st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="21"></img></td>
+							<td><img id="inv22img" src="" data-tooltip title="22"/><img id="inv22st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="22"></img></td>
+							<td><img id="inv23img" src="" data-tooltip title="23"/><img id="inv23st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="23"></img></td>
+							<td><img id="inv24img" src="" data-tooltip title="24"/><img id="inv24st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="24"></img></td>
+							<td><img id="inv25img" src="" data-tooltip title="25"/><img id="inv25st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="25"></img></td>
 						</tr>
 						<tr>
 							<td id="inv21bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -114,9 +121,15 @@
 						</tr>
 					</tbody>
 				</table>
-				<button id="inventoryNextPage" class="inventory-button" onclick="inventoryNextPage()">Next Page</button>
-				<button id="inventoryLastPage" class="inventory-button" onclick="inventoryLastPage()">Last Page</button>
-				<text id="inventoryPageText"></text>
+				<table class="text-center">
+					<tbody>
+						<tr>
+							<td style="width:20%;"><button id="inventoryLastPage" onclick="inventoryLastPage()" style="margin:auto;">Last Page</button></td>
+							<td style="width:60%; font-size:15px;"><text id="inventoryPageText"></text></td>
+							<td style="width:20%;"><button id="inventoryNextPage" onclick="inventoryNextPage()" style="margin:auto;">Next Page</button></td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 		
@@ -133,7 +146,7 @@
 		
 		<!-- Post initialization -->
 		<script>
-			openInventory();
+			postInitialize();
 		</script>
 	</body>
 </html>
