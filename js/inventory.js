@@ -1,13 +1,21 @@
 inventory = [];
+inventoryKeys = {};
 inventoryPage = 0;
 
 function inspectSkin(skin) {
 	
 }
 
-function addSkinToInventory(name, st) {
-	var skin = new InventorySkin(name, st);
+//Input the skin object not the name of the skin
+function addSkinToInventory(object, st) {
+	var skin = new InventorySkin(object, st);
 	inventory.splice(0, 0, skin);
+}
+
+//Input the key object not the name of the key
+function addKeyToInventory(object) {
+	inventoryKeys[object.collection]++;
+	inventory.splice(0, 0, object);
 }
 
 function drawInventory() {
@@ -20,12 +28,25 @@ function drawInventory() {
 	}
 	for (var i = 1; i < Math.min(inventory.length+1, 26); i++) {
 		var skin = inventory[i+(inventoryPage*25)-1];
-		document.getElementById("inv"+i+"img").src=skin.skin.image;
-		document.getElementById("inv"+i+"bg").children[0].innerHTML=skin.skin.gun;
-		document.getElementById("inv"+i+"bg").children[2].innerHTML=skin.skin.skin;
+		var rarity = 0;
+		
+		if (skin instanceof InventorySkin) {
+			document.getElementById("inv"+i+"bg").children[0].innerHTML=skin.skin.gun;
+			document.getElementById("inv"+i+"bg").children[2].innerHTML=skin.skin.skin;
+			document.getElementById("inv"+i+"img").src=skin.skin.image;
+			rarity = skin.skin.rarity;
+		} else if (skin instanceof Key || skin instanceof Case) {
+			document.getElementById("inv"+i+"bg").children[0].innerHTML=skin.collection.substring(0,1).toUpperCase()+skin.collection.substring(1,skin.collection.length);
+			document.getElementById("inv"+i+"img").src=skin.image;
+			if (skin instanceof Key)
+				document.getElementById("inv"+i+"bg").children[2].innerHTML="Case Key";
+			else if (skin instanceof Case)
+				document.getElementById("inv"+i+"bg").children[2].innerHTML="Case";
+		}
+			
 		if (skin.st == true)
 			document.getElementById("inv"+i+"st").src="graphics/misc/stattrak.png"
-		switch(inventory[i+(inventoryPage*25)-1].skin.rarity) {
+		switch(rarity) {
 			case 0:
 				document.getElementById("inv"+i+"bg").style.backgroundColor="#ccccb3";
 				break;
@@ -73,9 +94,9 @@ function inventoryLastPage() {
 	drawInventory();
 }
 
-function openInventory() {
+function openInventory(page) {
 	tab = "inventory";
-	inventoryPage = 0;
+	inventoryPage = page;
 	document.getElementById("inventoryPageText").innerHTML="Page "+(inventoryPage+1)+"/"+Math.max(Math.ceil(inventory.length/25),1);
 	document.getElementById("inventoryLastPage").disabled = true;
 	if (inventory.length > 25)

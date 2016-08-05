@@ -6,7 +6,7 @@
 	</head>
 	<body>
 		<div class="row" id="header" style="height:10%; margin:0; padding:0; border:0; width:100%; position:relative; z-index:100;">
-			<table style="width:100%; padding:0; margin:0; height:100%;">
+			<table style="width:100%; padding:0; margin:0; height:80%;">
 					<tr>
 						<td id="headerInventoryButton">
 							<text class="text-center">Inventory</text>
@@ -19,15 +19,44 @@
 						</td>
 					</tr>
 			</table>
+			<table id="subHeader" style="height:20%; width:100%; margin:0; padding:0;">
+				<tr>
+					<td style="width:100%;">
+						<text class="text-center" id="moneyDisplay"></text>
+					</td>
+				</tr>
+			</table>
 		</div>
+		
 		
 		<div class="container-fluid" id="main_container" style="border:0; margin:0; padding:0;">
 			
+			<!-- Unlock case container -->
+			<div class="row" id="unlockCase" style="padding:0; margin:0;">
+				<table style="margin:auto; margin-top:20%; height:11em;">
+					<tbody>
+						<tr style="height:9em;">
+							<td style="border:2px solid black; width:9em; height:9em;"><img style="width:100%; height:100%;"></img>
+							<td style="width:20em; height:9em;"></td>
+							<td style="border:2px solid black; width:9em; height:9em;"><img style="width:100%; height:100%;"></img></td>
+						</tr>
+						<tr style="height:2em;">
+							<td style="border:2px solid black; width:9em; height:2em;" align="center"><text></text></td>
+							<td style="width:20em; height:2em;"></td>
+							<td style="border:2px solid black; width:9em; height:2em;" align="center"><text></text></td>
+						</tr>
+					</tbody>
+				</table>
+				<div style="margin:auto; margin-top:1em; width:12em; height:3em;">
+					<button id="unlockCaseButton" onclick="rollCase()">Unlock container</button>
+				</div>
+			</div>
+			
 			<!-- Case roll container -->
 			<div class="row" id="caseRollContainer" style="padding:0; margin:0;">
-				<div class="col-md-4 col-xs-4" style="background-color:blue; width:30%; height:90%; padding:0; position:relative; z-index:2"></div>
+				<div class="col-md-4 col-xs-4" style="width:30%; height:90%; padding:0; position:relative; z-index:2"></div>
 				<div class="col-md-4 col-xs-4" style="padding:0; width:40%; height:90%;">
-					<div class="row" style="background-color:blue; width:100%; height:40%; padding:0; margin:0; position:relative; z-index:2;"></div>
+					<div class="row" style="width:100%; height:40%; padding:0; margin:0; position:relative; z-index:2;"></div>
 					<div class="row" style="width:100%; height:20%; padding:0; margin:0; position:relative;">
 						<table id="caseRollDivider" style="width:100%; height:100%; position:relative; z-index:10;">
 							<tbody>
@@ -40,9 +69,9 @@
 						<div style="position:absolute; top:4px; left:4px; overflow:hidden;" id="caseRollDisplay">
 						</div>
 					</div>
-					<div class="row" style="background-color:blue; width:100%; height:40%; padding:0; margin:0; position:relative; z-index:2;"></div>
+					<div class="row" style="width:100%; height:40%; padding:0; margin:0; position:relative; z-index:2;"></div>
 				</div>
-				<div class="col-md-4 col-xs-4" style="background-color:blue; width:30%; height:90%; padding:0; position:relative; z-index:2;"></div>
+				<div class="col-md-4 col-xs-4" style="width:30%; height:90%; padding:0; position:relative; z-index:2;"></div>
 			</div>
 			
 			<!-- Inventory container -->
@@ -50,11 +79,11 @@
 				<table>
 					<tbody id="inventoryTable">
 						<tr>
-							<td><img id="inv1img" src="" data-tooltip title="1"/><img id="inv1st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="1"></img></td>
-							<td><img id="inv2img" src="" data-tooltip title="2"/><img id="inv2st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="2"></img></td>
-							<td><img id="inv3img" src="" data-tooltip title="3"/><img id="inv3st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="3"></img></td>
-							<td><img id="inv4img" src="" data-tooltip title="4"/><img id="inv4st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="4"></img></td>
-							<td><img id="inv5img" src="" data-tooltip title="5"/><img id="inv5st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="5"></img></td>
+							<td><img id="inv1img" src="" data-tooltip title="1" class="onHover"/><img id="inv1st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="1"></img></td>
+							<td><img id="inv2img" src="" data-tooltip title="2" class="onHover"/><img id="inv2st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="2"></img></td>
+							<td><img id="inv3img" src="" data-tooltip title="3" class="onHover"/><img id="inv3st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="3"></img></td>
+							<td><img id="inv4img" src="" data-tooltip title="4" class="onHover"/><img id="inv4st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="4"></img></td>
+							<td><img id="inv5img" src="" data-tooltip title="5" class="onHover"/><img id="inv5st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="5"></img></td>
 						</tr>
 						<tr>
 							<td id="inv1bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -64,11 +93,11 @@
 							<td id="inv5bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv6img" src="" data-tooltip title="6"/><img id="inv6st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="6"></img></td>
-							<td><img id="inv7img" src="" data-tooltip title="7"/><img id="inv7st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="7"></img></td>
-							<td><img id="inv8img" src="" data-tooltip title="8"/><img id="inv8st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="8"></img></td>
-							<td><img id="inv9img" src="" data-tooltip title="9"/><img id="inv9st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="9"></img></td>
-							<td><img id="inv10img" src="" data-tooltip title="10"/><img id="inv10st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="10"></img></td>
+							<td><img id="inv6img" src="" data-tooltip title="6" class="onHover"/><img id="inv6st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="6"></img></td>
+							<td><img id="inv7img" src="" data-tooltip title="7" class="onHover"/><img id="inv7st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="7"></img></td>
+							<td><img id="inv8img" src="" data-tooltip title="8" class="onHover"/><img id="inv8st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="8"></img></td>
+							<td><img id="inv9img" src="" data-tooltip title="9" class="onHover"/><img id="inv9st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="9"></img></td>
+							<td><img id="inv10img" src="" data-tooltip title="10" class="onHover"/><img id="inv10st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="10"></img></td>
 						</tr>
 						<tr>
 							<td id="inv6bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -78,11 +107,11 @@
 							<td id="inv10bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv11img" src="" data-tooltip title="11"/><img id="inv11st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="11"></img></td>
-							<td><img id="inv12img" src="" data-tooltip title="12"/><img id="inv12st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="12"></img></td>
-							<td><img id="inv13img" src="" data-tooltip title="13"/><img id="inv13st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="13"></img></td>
-							<td><img id="inv14img" src="" data-tooltip title="14"/><img id="inv14st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="14"></img></td>
-							<td><img id="inv15img" src="" data-tooltip title="15"/><img id="inv15st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="15"></img></td>
+							<td><img id="inv11img" src="" data-tooltip title="11" class="onHover"/><img id="inv11st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="11"></img></td>
+							<td><img id="inv12img" src="" data-tooltip title="12" class="onHover"/><img id="inv12st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="12"></img></td>
+							<td><img id="inv13img" src="" data-tooltip title="13" class="onHover"/><img id="inv13st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="13"></img></td>
+							<td><img id="inv14img" src="" data-tooltip title="14" class="onHover"/><img id="inv14st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="14"></img></td>
+							<td><img id="inv15img" src="" data-tooltip title="15" class="onHover"/><img id="inv15st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="15"></img></td>
 						</tr>
 						<tr>
 							<td id="inv11bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -92,11 +121,11 @@
 							<td id="inv15bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv16img" src="" data-tooltip title="16"/><img id="inv16st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="16"></img></td>
-							<td><img id="inv17img" src="" data-tooltip title="17"/><img id="inv17st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="17"></img></td>
-							<td><img id="inv18img" src="" data-tooltip title="18"/><img id="inv18st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="18"></img></td>
-							<td><img id="inv19img" src="" data-tooltip title="19"/><img id="inv19st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="19"></img></td>
-							<td><img id="inv20img" src="" data-tooltip title="20"/><img id="inv20st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="20"></img></td>
+							<td><img id="inv16img" src="" data-tooltip title="16" class="onHover"/><img id="inv16st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="16"></img></td>
+							<td><img id="inv17img" src="" data-tooltip title="17" class="onHover"/><img id="inv17st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="17"></img></td>
+							<td><img id="inv18img" src="" data-tooltip title="18" class="onHover"/><img id="inv18st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="18"></img></td>
+							<td><img id="inv19img" src="" data-tooltip title="19" class="onHover"/><img id="inv19st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="19"></img></td>
+							<td><img id="inv20img" src="" data-tooltip title="20" class="onHover"/><img id="inv20st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="20"></img></td>
 						</tr>
 						<tr>
 							<td id="inv16bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -106,11 +135,11 @@
 							<td id="inv20bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 						</tr>
 						<tr>
-							<td><img id="inv21img" src="" data-tooltip title="21"/><img id="inv21st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="21"></img></td>
-							<td><img id="inv22img" src="" data-tooltip title="22"/><img id="inv22st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="22"></img></td>
-							<td><img id="inv23img" src="" data-tooltip title="23"/><img id="inv23st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="23"></img></td>
-							<td><img id="inv24img" src="" data-tooltip title="24"/><img id="inv24st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="24"></img></td>
-							<td><img id="inv25img" src="" data-tooltip title="25"/><img id="inv25st" class="inventoryST" src="graphics/misc/transparent.png" data-tooltip title="25"></img></td>
+							<td><img id="inv21img" src="" data-tooltip title="21" class="onHover"/><img id="inv21st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="21"></img></td>
+							<td><img id="inv22img" src="" data-tooltip title="22" class="onHover"/><img id="inv22st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="22"></img></td>
+							<td><img id="inv23img" src="" data-tooltip title="23" class="onHover"/><img id="inv23st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="23"></img></td>
+							<td><img id="inv24img" src="" data-tooltip title="24" class="onHover"/><img id="inv24st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="24"></img></td>
+							<td><img id="inv25img" src="" data-tooltip title="25" class="onHover"/><img id="inv25st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="25"></img></td>
 						</tr>
 						<tr>
 							<td id="inv21bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
@@ -133,9 +162,13 @@
 			</div>
 		</div>
 		
+		<ul class="custom-menu onHover" id="invContextMenu">
+		</ul>
+		
 		<!-- Load API and other and js libraries -->
 		<script type="text/javascript" src="js/jquery-2.2.4.js"></script>
 		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/contextmenu.js"></script>
 		<script type="text/javascript" src="js/tooltip.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
 		<script type="text/javascript" src="js/item.js"></script>
@@ -143,6 +176,7 @@
 		<script type="text/javascript" src="js/shop.js"></script>
 		<script type="text/javascript" src="js/case.js"></script>
 		<script type="text/javascript" src="js/itemDictionary.js"></script>
+		
 		
 		<!-- Post initialization -->
 		<script>

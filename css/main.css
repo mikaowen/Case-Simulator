@@ -65,15 +65,23 @@ button {
 	border:1px solid black;
 }
 
-#header table tr td {
+#header td {
 	border:5px solid black;
 	background-color:#00b300;
 	text-align:center;
 	font-size:20px;
 }
 
-#header table tr td:hover {
+#header td:hover {
 	background-color:#00cc00;
+}
+
+#subHeader td:hover {
+	background-color:#00b300;
+}
+
+#subHeader td{
+	border-top-width:0px;
 }
 
 #main_container {
@@ -94,13 +102,11 @@ button {
 }
 
 .caseST {
-	position:relative;
+	position:absolute;
 	width:50%;
 	height:50%;
-	margin-right:-50%;
-	margin-bottom:-50%;
-	left:-50%;
-	bottom:-50%;
+	left:45%;
+	top:45%;
 }
 
 #inventory table:first-child {
@@ -137,4 +143,41 @@ button {
 
 #caseRollDisplay {
 	z-index:1;
+}
+
+#unlockCaseButton {
+	background:linear-gradient(#33cc33, #248f24);
+	font-size:1.3em;
+	width:100%;
+	height:100%;
+	border:2px solid black;
+}
+
+#unlockCaseButton:hover {
+	background:linear-gradient(#5cd65c, #33cc33);
+}
+
+.custom-menu {
+    display:none;
+    z-index:1000;
+    position:absolute;
+    overflow:hidden;
+    border:1px solid #CCC;
+    white-space:nowrap;
+    font-family:sans-serif;
+    background:#FFF;
+    color:#333;
+    border-radius:5px;
+    padding:0;
+}
+
+.custom-menu li {
+    padding:8px 12px;
+    cursor:pointer;
+    list-style-type:none;
+    transition:all .3s ease;
+}
+
+.custom-menu li:hover {
+    background-color:#DEF;
 }

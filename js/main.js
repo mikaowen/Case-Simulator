@@ -1,15 +1,19 @@
+hoverElement = "";
+hoverInventorySkin = 0;
+money = 0.00;
+
 function disableAllTabs() {
 	document.getElementById("caseRollContainer").style.display = "none";
 	//document.getElementById("shop").style.display = "none";
 	document.getElementById("inventory").style.display = "none";
+	document.getElementById("unlockCase").style.display = "none";
 }
 
 //Main game clock
 setInterval(function() {
-	
 	document.getElementById("caseRollDisplay").style.width=(document.getElementById("caseRollDivider").offsetWidth-8)+"px";
 	document.getElementById("caseRollDisplay").style.height=(document.getElementById("caseRollDivider").offsetHeight-8)+"px";
-	
+	document.getElementById("moneyDisplay").innerHTML="$"+money.toFixed(2);
 	
 	//Current main_container tab
 	disableAllTabs();
@@ -22,6 +26,9 @@ setInterval(function() {
 			//break;
 		case "caseRoll":
 			document.getElementById("caseRollContainer").style.display = "inline";
+			break;
+		case "unlockCase":
+			document.getElementById("unlockCase").style.display = "inline";
 			break;
 		default:
 			throw new Error("The tab variable has an invalid value.");
@@ -91,16 +98,17 @@ setInterval(function() {
 			}
 			
 			//The layout of the inventory tooltip being inserted into the HTML input stream via javascript
+			
 			var text = "<div class='row text-center' id='tooltipHeader'><text style='font-size:1em;'>"+stat+skin.skin.displayName+
 			"</text></div><div class='row text-left' style='width:100%;'><ul style='list-style-type:none; width:auto;'>"+
 			"<li><text>Weapon: "+skin.skin.gun+"</text></li><li><text>Skin: "+skin.skin.skin+
 			"</text></li><li><text>Collection: The "+cases[skin.skin.collection].collection+
 			" collection</li><li><text>Exterior: "+skin.exterior+"</text></li><li><text>Float: "+
-			skin.flt+"</li></text><li><text>Price: $"+price+"</text></li></ul></div>"+
+			skin.flt+"</li></text><li><text>Price: $"+price.toFixed(2)+"</text></li></ul></div>"+
 			"<div id='tooltipFloat' class='row text-center'><table id='tooltipFloatTable'><div class='tooltipFloatBG'></div><div class='tooltipFloatBG'></div>"+
-			"<div id='tooltipFloatDivider'><tbody><tr><td style='width:7%;'><text>FN</text></td><td style='width:8%;'><text>MW</text></td>"+
+			"<div id='tooltipFloatDivider'><tbody><tr><td style='width:7%;'><text style='font-size:0.3em'>FN</text></td><td style='width:8%;'><text style='font-size:0.3em'>MW</text></td>"+
 			"<td style='width:23%;'><text>FT</text></td><td style='width:7%;'>"+
-			"<text>WW</text></td><td style='width:55%;'><text>BS</text></td></tr></tbody></table></div>"
+			"<text style='font-size:0.2em'>WW</text></td><td style='width:55%;'><text>BS</text></td></tr></tbody></table></div>"
 			
 			//Editing the style of the elements via javascript
 			tooltip.innerHTML=text;
@@ -111,7 +119,7 @@ setInterval(function() {
 			var bg = document.getElementsByClassName("tooltipFloatBG");
 			divider.style.height=height-4;
 			divider.style.bottom="-"+(height-2)+"px";
-			divider.style.right="-"+Math.floor((skin.flt*100)*((width-4)/100))+"px";
+			divider.style.right="-"+Math.floor((skin.flt*100)*((width-4)/100)+2)+"px";
 			divider.style.marginTop="-"+(height)+"px";
 			bg[0].style.height=height-4;
 			bg[1].style.height=height-4;
@@ -123,28 +131,107 @@ setInterval(function() {
 			bg[1].style.bottom="-"+(height-6)+"px";
 			bg[0].style.marginTop="-"+(height-4)+"px";
 			bg[1].style.marginTop="-"+(height-4)+"px";
-		} else {
+		}  else if (skin instanceof Key || skin instanceof Case) {
+			var text = "<div class='row text-center' id='tooltipHeader' style='background-color:#ccccb3;'><text style='font-size:1em;'>"+skin.displayName+
+			"</text></div><div class='row text-left' style='width:100%;'><ul style='list-style-type:none; width:auto;'>"+
+			"<li><text>Collection: The "+skin.collection+" collection</text></li><li><text>Price: $"+skin.price.toFixed(2)+"</text></li></ul></div>";
+			tooltip.innerHTML=text;
+		}	else {
 			tooltip.innerHTML="Empty slot";
 			tooltip.style.width="auto";
 			tooltip.style.padding="1em";
 		}
 	}
+	
+	//Unlock case tab
+	if (tab == "unlockCase") {
+		var caseUnlock = document.getElementById("unlockCase").children[0].children[0].children;
+		caseUnlock[0].children[0].children[0].src = keys[cases[rollCaseName].key].image;
+		caseUnlock[0].children[2].children[0].src = cases[rollCaseName].image;
+		caseUnlock[1].children[0].children[0].innerHTML=keys[cases[rollCaseName].key].displayName;
+		caseUnlock[1].children[2].children[0].innerHTML=cases[rollCaseName].displayName;
+	}
+	
+	if ((isHovered("#inventory img") || isHovered(".custom-menu")) && hoverElement != "") {
+		var i = Number(hoverElement.id.substring(3,5));
+		if (hoverElement.id.substring(4,5) == "i" || hoverElement.id.substring(4,5) == "s")
+			i = Number(hoverElement.id.substring(3,4));
+		if (i != hoverInventorySkin && hoverInventorySkin != 0) {
+			hoverInventorySkin = 0;
+			$("#invContextMenu").hide(0);
+			document.getElementById("invContextMenu").innerHTML="";
+		} else {
+			hoverInventorySkin = i;
+			if (i+(inventoryPage*25) <= inventory.length && !document.getElementById("invContextMenu").hasChildNodes()) {
+				inventoryItemPosition = i+(inventoryPage*25)-1;
+				var skin = inventory[i+(inventoryPage*25)-1];
+				if (skin instanceof InventorySkin) {
+					var price = 0.00;
+					var prices = skin.skin.price[0];
+					if (skin.st == true)
+						prices = skin.skin.price[1];
+						
+					//Looking up the price of the gun
+					switch(skin.exterior) {
+						case "Factory New":
+							price = prices[0];
+							break;
+						case "Minimal Wear":
+							price = prices[1];
+							break;
+						case "Field-Tested":
+							price = prices[2];
+							break;
+						case "Well-Worn":
+							price = prices[3];
+							break;
+						case "Battle-Scarred":
+							price = prices[4];
+							break;
+						default:
+							throw new Error("A skin with an invalid exterior was found: "+skin.exterior);
+					}
+					document.getElementById("invContextMenu").innerHTML = "<li data-action='sellInventoryItem'>Sell for $"+price.toFixed(2)+"</li>"
+				} else if (skin instanceof Case) {
+					document.getElementById("invContextMenu").innerHTML = "<li data-action='sellInventoryItem'>Sell for $"+skin.price.toFixed(2)+"</li><li data-action='unlockCase'>Unlock case</li>"
+				} else if (skin instanceof Key) {
+					document.getElementById("invContextMenu").innerHTML = "<li data-action='sellInventoryItem'>Sell for $"+skin.price.toFixed(2)+"</li>"
+				}
+			} else if (!(i+(inventoryPage*25) <= inventory.length)) {
+				$("#invContextMenu").hide(0);
+				document.getElementById("invContextMenu").innerHTML="";
+				hoverInventorySkin = 0;
+			}
+		}
+	} else {
+		$("#invContextMenu").hide(0);
+		document.getElementById("invContextMenu").innerHTML="";
+		hoverInventorySkin = 0;
+	}
 }, 0);
 
 function postInitialize() {
-	openInventory();
+	openInventory(0);
 }
 
-//jquery
+function isHovered(id){
+    return $(id+":hover").length > 0;
+}
+
+//jQuery
 $("#headerInventoryButton").click(function() {
-	openInventory();
+	openInventory(0);
 });
 $("#headerShopButton").click(function() {
 	openShop();
 });
-$("#caseButton").click(function() {
-	tab="caseRoll";
-});
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();
+});
+
+$(function() {
+	$('.onHover').mouseover(function() {
+		if (!$(this).hasClass("custom-menu"))
+			hoverElement = this;
+	});
 });
