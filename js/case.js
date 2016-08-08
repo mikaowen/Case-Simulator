@@ -1,9 +1,11 @@
 cases = {};
+keys  = {};
 rollCaseName = "";
 rollItems = [];
 rollItemsST = [];
+inventoryItemPosition = -1;
 
-function Case(name, price, key, image, logo, collection, items) {
+function Case(name, price, displayName, key, image, logo, collection, items) {
 	this.items = items;
 	this.collection = collection;
 	this.name = name;
@@ -11,7 +13,9 @@ function Case(name, price, key, image, logo, collection, items) {
 	this.price = price;
 	this.key = key;
 	this.image = image;
+	this.displayName = displayName;
 	this.t = [[],[],[],[],[],[],[]];
+	inventoryCases[collection] = 0;
 	for (var i = 0; i < this.items.length; i++) {
 		switch(this.items[i].rarity) {
 			case 0:
@@ -43,6 +47,16 @@ function Case(name, price, key, image, logo, collection, items) {
 	cases[name] = this;
 }
 
+function Key(name, price, collection, displayName, image) {
+	this.name = name;
+	this.displayName = displayName;
+	this.collection = collection;
+	this.price = price;
+	this.image = image;
+	keys[name] = this;
+	inventoryKeys[collection] = 0;
+}
+
 function addItemToRollList() {
 	var t = 0;
 	var rand = Math.random();
@@ -66,11 +80,10 @@ function addItemToRollList() {
 	rollItems.push(skin);
 }
 
-function rollCase(name) {
+function rollCase() {
 	tab = "caseRoll";
-	rollCaseName = name;
 	window.setTimeout(function() {
-		if (cases[name] == null) {
+		if (cases[rollCaseName] == null) {
 			throw new Error("Attempted to find a case with the name '" + name + "' but it was not present");
 			return;
 		}
@@ -115,19 +128,33 @@ function rollCase(name) {
 			if (rollItemsST[i] == true)
 				document.getElementById("caseRollDisplay").children[i].firstChild.src = "graphics/misc/stattrak.png";
 		}
-	},1);
+		finishCase();
+	},5);
 }
 
 function finishCase() {
+	addSkinToInventory(rollItems[rollItems.length-2], rollItemsST[rollItemsST.length-2]);
+	rollCaseName = "unknown";
 	var i = 0;
 	$("#caseRollDisplay div").animate({
 		left: "-="+(document.getElementById("caseRollDisplay").lastChild.offsetLeft-(document.getElementById("caseRollDisplay").firstChild.offsetWidth*2))
 	}, 5000, function() {
 		i++;
 		if (i == 40) {
-			addSkinToInventory(rollItems[rollItems.length-2], rollItemsST[rollItemsST.length-2]);
 			//inspectSkin(inventory[inventory.length-1]);
-			rollCaseName = "unknown";
+			
 		}
 	});
+}
+
+function unlockCase() {
+	rollCaseName = inventory[inventoryItemPosition].name;
+	if (inventoryKeys[cases[rollCaseName].collection] < 1) {
+		return;
+	}
+	inventoryKeys[cases[rollCaseName].collection]--;
+	inventoryCases[cases[rollCaseName].collection]--;
+	inventory.splice(inventoryItemPosition, 1);
+	inventory.splice(inventory.indexOf(keys[cases[rollCaseName].key]), 1);
+	tab = "unlockCase";
 }

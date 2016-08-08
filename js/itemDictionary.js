@@ -22,8 +22,9 @@ var tec9_ice_cap = new Skin("tec-9_ice_cap", "Ice Cap", 2, "gamma_case", 0.50, 0
 var sg_553_aerial = new Skin("sg_553_aerial", "Aerial", 2, "gamma_case", 0.60, 0.0, true, false, "SG 553", "graphics/gamma/sg_553_aerial.png", [[0.59,0.35,0.18,0.23,0.17],[3.41,1.48,0.68,1.25,0.84]]);
 
 //Gamma Case
-var gamma_case = new Case("gamma_case", 2.5, "gamma_key", "graphics/gamma/gamma_case.png", "graphics/gamma/gamma_logo.png", "gamma",
+var gamma_case = new Case("gamma_case", 2.50, "Gamma case", "gamma_key", "graphics/gamma/gamma_case.png", "graphics/gamma/gamma_logo.png", "gamma",
 [glock_wasteland_rebel,m4a1s_mecha_industries,m4a4_desolate_space,scar20_bloodsport,
 p2000_imperial_dragon,awp_phobos,aug_aristocrat,p90_chopper,sawedoff_limelight,
 r8_revolver_reboot,fiveseven_violent_daimyo,mac10_carnivore,nova_exo,p250_iron_clad,
 ppbizon_harvester,tec9_ice_cap,sg_553_aerial]);
+var gamma_key = new Key("gamma_key",  2.50, "gamma", "Gamma case key", "graphics/gamma/gamma_key.png")
