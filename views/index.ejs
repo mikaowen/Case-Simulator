@@ -180,8 +180,8 @@
 		</ul>
 
 		<!-- Load API and other and js libraries -->
-		<% maindata.static.js.forEach(function(js){ %>
-		<script type="text/javascript" src="js<%= js %>.js"></script>
+		<% mainjson.static.js.forEach(function(js){ %>
+		<script type="text/javascript" src="js/<%= js %>.js"></script>
 		<% }); %>
 		<!-- Post initialization -->
 		<script>
