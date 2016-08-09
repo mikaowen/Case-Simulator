@@ -13,8 +13,8 @@
       "image":"graphics/gamma/glock_wasteland_rebel.png",
       "price": [
         [26.81,22.83,19.86,18.57,15.48],
-        [123.26,116.32,56.51,79.45,90.17],
-      ],
+        [123.26,116.32,56.51,79.45,90.17]
+      ]
     },
     "m4a1s_mecha_industries": {
       "name":"m4a1-s_mecha_industries",
@@ -29,8 +29,8 @@
       "image":"graphics/gamma/m4a1s_mecha_industries.png",
       "price": [
         [57.27,36.98,25.06,33.78,18,93],
-        [352,89,131.37,78.91,null,56.6],
-      ],
+        [352,89,131.37,78.91,null,56.6]
+      ]
     },
     "m4a4_desolate_space": {
       "name":"m4a4_desolate_space",
@@ -45,8 +45,8 @@
       "image":"graphics/gamma/m4a4_desolate_space.png",
       "price": [
         [61.67,35.69,28.63,22.90,17.73],
-        [223.33,102.60,74.50,62.76,48.59],
-      ],
+        [223.33,102.60,74.50,62.76,48.59]
+      ]
     },
     "scar20_bloodsport": {
       "name":"scar-20_bloodsport",
@@ -61,8 +61,8 @@
       "image":"graphics/gamma/scar20_bloodsport.png",
       "price": [
         [3.77,3.35,2.43,3.02,"NaN"],
-        [18.93,10.61,7.89,9.79,"NaN"],
-      ],
+        [18.93,10.61,7.89,9.79,"NaN"]
+      ]
     },
     "p2000_imperial_dragon": {
       "name":"p2000_imperial_dragon",
@@ -77,8 +77,8 @@
       "image":"graphics/gamma/p2000_imperial_dragon.png",
       "price": [
         [7.28,3.99,2.92,3.06,3.73],
-        [29.56,19.58,13.08,15.57,18.66],
-      ],
+        [29.56,19.58,13.08,15.57,18.66]
+      ]
     },
     "awp_phobos": {
       "name":"awp-phobos",
@@ -93,8 +93,8 @@
       "image":"graphics/gamma/awp_phobos.png",
       "price": [
         [5.96,4.58,4.47,5.62,"NaN"],
-        [19.92,16.94,15.0,16.19,"NaN"],
-      ],
+        [19.92,16.94,15.0,16.19,"NaN"]
+      ]
     },
     "aug_aristocrat": {
       "name":"aug_aristocrat",
@@ -109,8 +109,8 @@
       "image":"graphics/gamma/aug_aristocrat.png",
       "price": [
         [2.87,1.68,1.07,1.28,1.20],
-        [9.86,4.89,3.83,3.90,3.23],
-      ],
+        [9.86,4.89,3.83,3.90,3.23]
+      ]
     },
     "p90_chopper": {
       "name":"p90_chopper",
@@ -125,8 +125,8 @@
       "image":"graphics/gamma/p90_chopper.png",
       "price": [
         [3.11,2.10,1.38,1.77,1.38],
-        [11.69,6.68,4.50,5.13,4.13],
-      ],
+        [11.69,6.68,4.50,5.13,4.13]
+      ]
     },
     "sawedoff_limelight": {
       "name":"sawed-off_limelight",
@@ -141,8 +141,8 @@
       "image":"graphics/gamma/sawedoff_limelight.png",
       "price": [
         [3.48,1.83,1.29,1.07,1.17],
-        [11.68,5.13,3.97,2.69,3.32],
-      ],
+        [11.68,5.13,3.97,2.69,3.32]
+      ]
     },
     "r8_revolver_reboot": {
       "name":"r8_revolver_reboot",
@@ -157,8 +157,8 @@
       "image":"graphics/gamma/r8_revolver_reboot.png",
       "price": [
         [4.94,1.61,1.24,1.10,1.03],
-        [20.46,5.03,3.87,2.97,3.18],
-      ],
+        [20.46,5.03,3.87,2.97,3.18]
+      ]
     },
     "fiveseven_violent_daimyo": {
       "name":"five-seven_violent_daimyo",
@@ -173,8 +173,8 @@
       "image":"graphics/gamma/fiveseven_violent_daimyo.png",
       "price": [
         [1.70,0.89,0.51,0.73,0.38],
-        [7.0,3.49,1.88,2.45,1.55],
-      ],
+        [7.0,3.49,1.88,2.45,1.55]
+      ]
     },
     "mac10_carnivore": {
       "name":"mac-10_carnivore",
@@ -189,8 +189,8 @@
       "image":"graphics/gamma/mac10_carnivore.png",
       "price": [
         [0.47,0.23,0.18,0.17,0.17],
-        [1.89,0.75,0.55,0.57,0.49],
-      ],
+        [1.89,0.75,0.55,0.57,0.49]
+      ]
     },
     "nova_exo": {
       "name":"nova_exo",
@@ -205,8 +205,8 @@
       "image":"graphics/gamma/nova_exo.png",
       "price": [
         [0.35,0.24,0.17,0.20,0.18],
-        [1.60,0.39,0.51,0.99,0.57],
-      ],
+        [1.60,0.39,0.51,0.99,0.57]
+      ]
     },
     "p250_iron_clad": {
       "name":"p250_iron_clad",
@@ -221,8 +221,8 @@
       "image":"graphics/gamma/p250_iron_clad.png",
       "price": [
         [0.75,0.22,0.17,0.18,0.17],
-        [4.80,0.82,0.62,0.64,0.52],
-      ],
+        [4.80,0.82,0.62,0.64,0.52]
+      ]
     },
     "ppbizon_harvester": {
       "name":"pp-bizon_harvester",
@@ -237,8 +237,8 @@
       "image":"graphics/gamma/ppbizon_harvester.png",
       "price": [
         [0.41,0.26,0.17,0.17,0.17],
-        [1.77,0.69,0.53,0.53,0.44],
-      ],
+        [1.77,0.69,0.53,0.53,0.44]
+      ]
     },
     "tec9_ice_cap": {
       "name":"tec-9_ice_cap",
@@ -253,8 +253,8 @@
       "image":"graphics/gamma/tec9_ice_cap.png",
       "price": [
         [0.73,0.55,0.21,0.28,0.20],
-        [3.47,2.29,1.24,1.27,0.99],
-      ],
+        [3.47,2.29,1.24,1.27,0.99]
+      ]
     },
     "sg_553_aerial": {
       "name":"sg_553_aerial",
@@ -269,9 +269,9 @@
       "image":"graphics/gamma/sg_553_aerial.png",
       "price": [
         [0.59,0.35,0.18,0.23,0.17],
-        [3.41,1.48,0.68,1.25,0.84],
-      ],
-    },
+        [3.41,1.48,0.68,1.25,0.84]
+      ]
+    }
   },
   "static": {
     "js": [
