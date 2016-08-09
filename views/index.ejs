@@ -151,11 +151,9 @@
 				<table>
 					<tbody id="inventoryTable">
 						<tr>
-							<td><img id="inv1img" src="" data-tooltip title="1" class="onHover"/><img id="inv1st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="1"></img></td>
-							<td><img id="inv2img" src="" data-tooltip title="2" class="onHover"/><img id="inv2st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="2"></img></td>
-							<td><img id="inv3img" src="" data-tooltip title="3" class="onHover"/><img id="inv3st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="3"></img></td>
-							<td><img id="inv4img" src="" data-tooltip title="4" class="onHover"/><img id="inv4st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="4"></img></td>
-							<td><img id="inv5img" src="" data-tooltip title="5" class="onHover"/><img id="inv5st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="5"></img></td>
+							<% for(var i=1; i=<5; i++) { %>
+							<td><img id="inv<%= i %>img" src="" data-tooltip title="1" class="onHover"/><img id="inv<%= i %>st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="<%= i %>"></img></td>
+							<% } %>
 						</tr>
 						<tr>
 							<td id="inv1bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
