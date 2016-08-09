@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 
 var app = express();
 
+//app.locals variables
 app.locals.mainjson = require('./main.json');
 
 // view engine setup
