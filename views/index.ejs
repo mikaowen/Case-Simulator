@@ -151,16 +151,14 @@
 				<table>
 					<tbody id="inventoryTable">
 						<tr>
-							<% for(var i=1; i=<5; i++) { %>
-							<td><img id="inv<%= i %>img" src="" data-tooltip title="1" class="onHover"/><img id="inv<%= i %>st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="<%= i %>"></img></td>
+							<% for(var i=1; i<=5; i++) { %>
+							<td><img id="inv<%= i %>img" src="" data-tooltip title="<%= i %>" class="onHover"/><img id="inv<%= i %>st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="<%= i %>"></img></td>
 							<% } %>
 						</tr>
 						<tr>
-							<td id="inv1bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv2bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv3bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv4bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv5bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<% for(var i=1; i<=5; i++) { %>
+							<td id="inv<%= i %>bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<% } %>
 						</tr>
 						<tr>
 							<td><img id="inv6img" src="" data-tooltip title="6" class="onHover"/><img id="inv6st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="6"></img></td>
