@@ -150,72 +150,18 @@
 			<div class="row" id="inventory">
 				<table>
 					<tbody id="inventoryTable">
+						<% for (var a=1; a<=5; a++) { %>
 						<tr>
-							<% for(var i=1; i<=5; i++) { %
-							<td><img id="inv<%= i %>img" src="" data-tooltip title="<%= i %>" class="onHover"/><img id="inv<%= i %>st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="<%= i %>"></img></td>
+							<% for(var b=(a-1)*5+1; b<=(a-1)*5+5; b++) { %>
+							<td><img id="inv<%= b %>img" src="" data-tooltip title="<%= b %>" class="onHover"/><img id="inv<%= b %>st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="<%= b %>"></img></td>
 							<% } %>
 						</tr>
 						<tr>
-							<% for(var i=1; i<=5; i++) { %>
-							<td id="inv<%= i %>bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
+							<% for(var b=(a-1)*5+1; b<=(a-1)*5+5; b++) { %>
+							<td id="inv<%= b %>bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
 							<% } %>
 						</tr>
-						<tr>
-							<td><img id="inv6img" src="" data-tooltip title="6" class="onHover"/><img id="inv6st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="6"></img></td>
-							<td><img id="inv7img" src="" data-tooltip title="7" class="onHover"/><img id="inv7st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="7"></img></td>
-							<td><img id="inv8img" src="" data-tooltip title="8" class="onHover"/><img id="inv8st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="8"></img></td>
-							<td><img id="inv9img" src="" data-tooltip title="9" class="onHover"/><img id="inv9st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="9"></img></td>
-							<td><img id="inv10img" src="" data-tooltip title="10" class="onHover"/><img id="inv10st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="10"></img></td>
-						</tr>
-						<tr>
-							<td id="inv6bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv7bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv8bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv9bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv10bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-						</tr>
-						<tr>
-							<td><img id="inv11img" src="" data-tooltip title="11" class="onHover"/><img id="inv11st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="11"></img></td>
-							<td><img id="inv12img" src="" data-tooltip title="12" class="onHover"/><img id="inv12st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="12"></img></td>
-							<td><img id="inv13img" src="" data-tooltip title="13" class="onHover"/><img id="inv13st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="13"></img></td>
-							<td><img id="inv14img" src="" data-tooltip title="14" class="onHover"/><img id="inv14st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="14"></img></td>
-							<td><img id="inv15img" src="" data-tooltip title="15" class="onHover"/><img id="inv15st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="15"></img></td>
-						</tr>
-						<tr>
-							<td id="inv11bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv12bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv13bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv14bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv15bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-						</tr>
-						<tr>
-							<td><img id="inv16img" src="" data-tooltip title="16" class="onHover"/><img id="inv16st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="16"></img></td>
-							<td><img id="inv17img" src="" data-tooltip title="17" class="onHover"/><img id="inv17st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="17"></img></td>
-							<td><img id="inv18img" src="" data-tooltip title="18" class="onHover"/><img id="inv18st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="18"></img></td>
-							<td><img id="inv19img" src="" data-tooltip title="19" class="onHover"/><img id="inv19st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="19"></img></td>
-							<td><img id="inv20img" src="" data-tooltip title="20" class="onHover"/><img id="inv20st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="20"></img></td>
-						</tr>
-						<tr>
-							<td id="inv16bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv17bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv18bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv19bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv20bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-						</tr>
-						<tr>
-							<td><img id="inv21img" src="" data-tooltip title="21" class="onHover"/><img id="inv21st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="21"></img></td>
-							<td><img id="inv22img" src="" data-tooltip title="22" class="onHover"/><img id="inv22st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="22"></img></td>
-							<td><img id="inv23img" src="" data-tooltip title="23" class="onHover"/><img id="inv23st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="23"></img></td>
-							<td><img id="inv24img" src="" data-tooltip title="24" class="onHover"/><img id="inv24st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="24"></img></td>
-							<td><img id="inv25img" src="" data-tooltip title="25" class="onHover"/><img id="inv25st" class="inventoryST onHover" src="graphics/misc/transparent.png" data-tooltip title="25"></img></td>
-						</tr>
-						<tr>
-							<td id="inv21bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv22bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv23bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv24bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-							<td id="inv25bg" class="invbg"><text class="text-center"></text><br><text class="text-center"></text></td>
-						</tr>
+						<% } %>
 					</tbody>
 				</table>
 				<table class="text-center">
