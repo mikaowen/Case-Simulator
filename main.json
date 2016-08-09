@@ -273,4 +273,18 @@
       ],
     },
   },
+  "static": {
+    "js": [
+      "jquery-2.2.4",
+      "bootstrap.min",
+      "contextmenu",
+      "tooltip",
+      "main",
+      "item",
+      "inventory",
+      "case",
+      "itemDictionary",
+      "shop"
+    ]
+  }
 }
