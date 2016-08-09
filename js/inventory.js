@@ -1,5 +1,6 @@
 inventory = [];
 inventoryKeys = {};
+inventoryCases = {};
 inventoryPage = 0;
 
 function inspectSkin(skin) {
@@ -15,6 +16,11 @@ function addSkinToInventory(object, st) {
 //Input the key object not the name of the key
 function addKeyToInventory(object) {
 	inventoryKeys[object.collection]++;
+	inventory.splice(0, 0, object);
+}
+
+function addCaseToInventory(object) {
+	inventoryCases[object.collection]++;
 	inventory.splice(0, 0, object);
 }
 

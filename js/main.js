@@ -1,10 +1,15 @@
 hoverElement = "";
+tab = "";
 hoverInventorySkin = 0;
 money = 0.00;
+shopPrice = 0;
+eventBus = {
+	money_change:[],
+}
 
 function disableAllTabs() {
 	document.getElementById("caseRollContainer").style.display = "none";
-	//document.getElementById("shop").style.display = "none";
+	document.getElementById("shop").style.display = "none";
 	document.getElementById("inventory").style.display = "none";
 	document.getElementById("unlockCase").style.display = "none";
 }
@@ -14,16 +19,15 @@ setInterval(function() {
 	document.getElementById("caseRollDisplay").style.width=(document.getElementById("caseRollDivider").offsetWidth-8)+"px";
 	document.getElementById("caseRollDisplay").style.height=(document.getElementById("caseRollDivider").offsetHeight-8)+"px";
 	document.getElementById("moneyDisplay").innerHTML="$"+money.toFixed(2);
-	
 	//Current main_container tab
 	disableAllTabs();
 	switch(tab) {
 		case "inventory":
 			document.getElementById("inventory").style.display = "inline";
 			break;
-		//case "shop":
-			//document.getElementById("shop").style.display = "inline";
-			//break;
+		case "shop":
+			document.getElementById("shop").style.display = "inline";
+			break;
 		case "caseRoll":
 			document.getElementById("caseRollContainer").style.display = "inline";
 			break;
@@ -210,7 +214,31 @@ setInterval(function() {
 	}
 }, 0);
 
+function addMoney(amount) {
+	money += amount;
+	callEvent("money_change");
+}
+
+//////////////////////////////
+//BEGIN OF THE EVENT HANDLER//
+//////////////////////////////
+function subscribeEvent(event, handler) {
+	eventBus[event].splice(0, 0, handler);
+}
+
+function callEvent(event) {
+	if (eventBus[event] != null) {
+		for (var i = 0; i < eventBus[event].length; i++)
+			eventBus[event][i]();
+	} else
+		throw new Error("Attempted to call invalid event name '"+event+"'");
+}
+////////////////////////////
+//END OF THE EVENT HANDLER//
+////////////////////////////
+
 function postInitialize() {
+	callEvent("money_change");
 	openInventory(0);
 }
 
@@ -223,7 +251,7 @@ $("#headerInventoryButton").click(function() {
 	openInventory(0);
 });
 $("#headerShopButton").click(function() {
-	openShop();
+	openShop(0);
 });
 $(document).ready(function(){
     $('[data-toggle="tooltip"]').tooltip();

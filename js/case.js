@@ -15,6 +15,7 @@ function Case(name, price, displayName, key, image, logo, collection, items) {
 	this.image = image;
 	this.displayName = displayName;
 	this.t = [[],[],[],[],[],[],[]];
+	inventoryCases[collection] = 0;
 	for (var i = 0; i < this.items.length; i++) {
 		switch(this.items[i].rarity) {
 			case 0:
@@ -128,7 +129,7 @@ function rollCase() {
 				document.getElementById("caseRollDisplay").children[i].firstChild.src = "graphics/misc/stattrak.png";
 		}
 		finishCase();
-	},1);
+	},5);
 }
 
 function finishCase() {
@@ -152,6 +153,7 @@ function unlockCase() {
 		return;
 	}
 	inventoryKeys[cases[rollCaseName].collection]--;
+	inventoryCases[cases[rollCaseName].collection]--;
 	inventory.splice(inventoryItemPosition, 1);
 	inventory.splice(inventory.indexOf(keys[cases[rollCaseName].key]), 1);
 	tab = "unlockCase";

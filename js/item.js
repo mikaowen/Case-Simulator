@@ -14,10 +14,31 @@ function Skin(name, skin, rarity, collection, minFloat, maxFloat, statTrak, souv
 	skins[name] = this;
 }
 
+function Knife(name, skin, rarity, collection, minFloat, maxFloat, statTrak, souvenir, gun, image, price, pattern) {
+	this.name = name;
+	this.skin = skin;
+	this.gun = gun;
+	this.rarity = rarity;
+	this.collection = collection;
+	this.minFloat = minFloat;
+	this.maxFloat = maxFloat;
+	this.statTrak = statTrak;
+	this.souvenir = souvenir;
+	this.displayName = gun + " | " + skin;
+	this.price = price;
+	this.image = image;
+	skins[name] = this;
+}
+
 function InventorySkin(skin, st) {
 	this.skin = skin;
 	this.st = st;
 	this.exterior = "NaN";
+	this.patternX = 0;
+	this.patternY = 0;
+	if (skin instanceof Knife) {
+		
+	}
 	this.flt = Number((Math.random() * (skin.minFloat - skin.maxFloat) + skin.maxFloat).toFixed(8));
 	
 	if (this.flt <= 0.07)
@@ -61,10 +82,15 @@ function sellInventoryItem() {
 			default:
 				throw new Error("A skin with an invalid exterior was found: "+skin.exterior);
 		}
-	} else if (item instanceof Case || item instanceof Key)
+	} else if (item instanceof Case || item instanceof Key) {
 		prices = item.price;
+		if (item instanceof Case)
+			inventoryCases[item.collection]--;
+		else
+			inventoryKeys[item.collection]--;
+	}
 	
-	money += prices;
+	addMoney(prices);
 	inventory.splice(inventoryItemPosition, 1);
 	openInventory(inventoryPage);
 }
