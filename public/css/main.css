@@ -1,0 +1,10 @@
+
+/* trying to load a "loading" element so the user knows that the page is loading, but that doesn't work
+/*body {
+  display: none;
+}
+
+h3.text-center.load {
+  display: block;
+}
+*/
