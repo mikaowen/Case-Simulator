@@ -35,62 +35,18 @@
 			<div class="row" id="shop">
 				<table>
 					<tbody id="shopTable">
+						<% for (var a=1; a<=4; a++) { %>
 						<tr>
-							<td><img id="shop1img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop2img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop3img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop4img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop5img" src="graphics/misc/transparent.png"/></img><text></text></td>
+							<% for(var b=(a-1)*5+1; b<=(a-1)*5+5; b++) { %>
+							<td><img id="shop<%= b %>img" src="graphics/misc/transparent.png"/></img><text></text></td>
+							<% } %>
 						</tr>
 						<tr>
-							<td id="shop1b" class="shopb"><button onclick="buyShopItem(1)"></button></td>
-							<td id="shop2b" class="shopb"><button onclick="buyShopItem(2)"></button></td>
-							<td id="shop3b" class="shopb"><button onclick="buyShopItem(3)"></button></td>
-							<td id="shop4b" class="shopb"><button onclick="buyShopItem(4)"></button></td>
-							<td id="shop5b" class="shopb"><button onclick="buyShopItem(5)"></button></td>
+							<% for(var b=(a-1)*5+1; b<=(a-1)*5+5; b++) { %>
+							<td id="shop<%= b %>b" class="shopb"><button onclick="buyShopItem(<%= b %>)"></button></td>
+							<% } %>
 						</tr>
-						<tr>
-							<td><img id="shop6img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop7img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop8img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop9img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop10img" src="graphics/misc/transparent.png"/></img><text></text></td>
-						</tr>
-						<tr>
-							<td id="shop6b" class="shopb"><button onclick="buyShopItem(6)"></button></td>
-							<td id="shop7b" class="shopb"><button onclick="buyShopItem(7)"></button></td>
-							<td id="shop8b" class="shopb"><button onclick="buyShopItem(8)"></button></td>
-							<td id="shop9b" class="shopb"><button onclick="buyShopItem(9)"></button></td>
-							<td id="shop10b" class="shopb"><button onclick="buyShopItem(10)"></button></td>
-						</tr>
-						<tr>
-							<td><img id="shop11img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop12img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop13img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop14img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop15img" src="graphics/misc/transparent.png"/></img><text></text></td>
-						</tr>
-						<tr>
-							<td id="shop11b" class="shopb"><button onclick="buyShopItem(11)"></button></td>
-							<td id="shop12b" class="shopb"><button onclick="buyShopItem(12)"></button></td>
-							<td id="shop13b" class="shopb"><button onclick="buyShopItem(13)"></button></td>
-							<td id="shop14b" class="shopb"><button onclick="buyShopItem(14)"></button></td>
-							<td id="shop15b" class="shopb"><button onclick="buyShopItem(15)"></button></td>
-						</tr>
-						<tr>
-							<td><img id="shop16img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop17img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop18img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop19img" src="graphics/misc/transparent.png"/></img><text></text></td>
-							<td><img id="shop20img" src="graphics/misc/transparent.png"/></img><text></text></td>
-						</tr>
-						<tr>
-							<td id="shop16b" class="shopb"><button onclick="buyShopItem(16)"></button></td>
-							<td id="shop17b" class="shopb"><button onclick="buyShopItem(17)"></button></td>
-							<td id="shop18b" class="shopb"><button onclick="buyShopItem(18)"></button></td>
-							<td id="shop19b" class="shopb"><button onclick="buyShopItem(19)"></button></td>
-							<td id="shop20b" class="shopb"><button onclick="buyShopItem(20)"></button></td>
-						</tr>
+						<% } %>
 					</tbody>
 				</table>
 				<table class="text-center">
