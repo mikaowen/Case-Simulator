@@ -1,0 +1,10 @@
+<!-- Load API and other and js libraries -->
+<% mainjson.static.js.forEach(function(js){ %>
+<script type="text/javascript" src="js/<%= js %>.js"></script>
+<% }); %>
+<script type="text/javascript" src="<%= bsjsurl %>"></script>
+
+<!-- Post initialization -->
+<script>
+  postInitialize();
+</script>

@@ -1,8 +1,11 @@
+<!-- Built by newo2001 & mikat @ github.com/mikaowen/case-simulator -->
 <html>
 	<head>
+		<% include header %>
 		<!-- Load API and other and css libraries -->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css"/>
-		<link rel="stylesheet" type="text/css" href="css/main.css"/>
+		<meta name="description" content="Just another case simulator webapp">
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+		<title>Case Simulator</title>
 	</head>
 	<body>
 		<div class="row" id="header" style="height:10%; margin:0; padding:0; border:0; width:100%; position:relative; z-index:100;">
@@ -135,13 +138,6 @@
 		<ul class="custom-menu onHover" id="invContextMenu">
 		</ul>
 
-		<!-- Load API and other and js libraries -->
-		<% mainjson.static.js.forEach(function(js){ %>
-		<script type="text/javascript" src="js/<%= js %>.js"></script>
-		<% }); %>
-		<!-- Post initialization -->
-		<script>
-			postInitialize();
-		</script>
+		<% include footer %>
 	</body>
 </html>

@@ -12,6 +12,14 @@ var app = express();
 //app.locals variables
 app.locals.mainjson = require('./main.json');
 
+if (app.get('env') === 'development') {
+  bsurl = "css/bootstrap.min.css";
+  bsjsurl = "js/bootstrap.min.js";
+} else {
+  bsurl = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+  bsjsurl = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js";
+}
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
