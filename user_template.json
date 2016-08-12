@@ -1,0 +1,26 @@
+{
+  "username": "name of the user",
+  "password": "hashed password",
+  "money": 0,
+  "items": [
+    {
+      "name": "name of the skin",
+      "float": 0.00,
+      "stattrak": false,
+      "souvenir": [
+        {
+          "sticker": "stickername"
+        }
+      ],
+      "pattern" : {
+        "x": 0,
+        "y": 0
+      },
+      "stickers": [
+        {
+          "sticker": "stickername"
+        }
+      ]
+    }
+  ]
+}
