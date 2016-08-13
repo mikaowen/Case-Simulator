@@ -1,7 +1,22 @@
 var express = require('express');
 var router = express.Router();
 
+var MongoClient = require('mongodb').MongoClient
+
 var mainjson = require("../main.json");
+
+/*
+MongoDB connection template
+
+MongoClient.connect(process.env.mongouri, function(err, db) {
+  if (err) {
+    console.log('u dun goofed: ', err)
+  } else {
+    console.log("Connected correctly to server");
+  }
+}
+
+*/
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -25,6 +40,15 @@ router.post("/nav_json", function(req, res, next) {
 });
 
 router.post('/getskin', function(req, res, next) {
+  MongoClient.connect(process.env.mongouri, function(err, db) {
+    if (err) {
+      console.log('u dun goofed: ', err)
+    } else {
+      console.log("Connected correctly to server");
+      var collection = db.collection('users');
+      collection.find('')
+    }
+  }
   if (!req.body.skins||!mainjson.skins[req.body.skin]) {res.status(404).send()}
   res.send(mainjson.skins[req.body.skin]);
 });
