@@ -273,6 +273,31 @@
       ]
     }
   },
+  "keys": {
+    "gamma_key": {
+      "name":"gamma_key",
+      "price":2.50,
+      "collection":"gamma",
+      "displayName":"Gamma case key",
+      "image":"graphics/gamma/gamma_key.png"
+    }
+  },
+  "cases": {
+    "gamma_case": {
+      "name":"gamma_case",
+      "price":2.50,
+      "displayName":"Gamma case",
+      "key":"gamma_key", "image":"graphics/gamma/gamma_case.png",
+      "logo":"graphics/gamma/gamma_logo.png",
+      "collection":"gamma",
+      "items": [
+        "glock_wasteland_rebel","m4a1s_mecha_industries","m4a4_desolate_space","scar20_bloodsport",
+        "p2000_imperial_dragon","awp_phobos","aug_aristocrat","p90_chopper","sawedoff_limelight",
+        "r8_revolver_reboot","fiveseven_violent_daimyo","mac10_carnivore","nova_exo","p250_iron_clad",
+        "ppbizon_harvester","tec9_ice_cap","sg_553_aerial"
+      ]
+    }
+  },
   "static": {
     "js": [
       "jquery-2.2.4",
