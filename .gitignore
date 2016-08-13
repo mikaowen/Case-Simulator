@@ -4,3 +4,4 @@ npm-debug.log
 .idea
 case-simulator.iml
 thumbs.db
+.env
