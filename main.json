@@ -17,7 +17,7 @@
       ]
     },
     "m4a1s_mecha_industries": {
-      "name":"m4a1-s_mecha_industries",
+      "name":"m4a1s_mecha_industries",
       "skin":"Mecha Industries",
       "rarity":5,
       "collection":"gamma_case",
@@ -49,7 +49,7 @@
       ]
     },
     "scar20_bloodsport": {
-      "name":"scar-20_bloodsport",
+      "name":"scar_20_bloodsport",
       "skin":"Bloodsport",
       "rarity":4,
       "collection":"gamma_case",
@@ -81,7 +81,7 @@
       ]
     },
     "awp_phobos": {
-      "name":"awp-phobos",
+      "name":"awp_phobos",
       "skin":"Phobos",
       "rarity":3,
       "collection":"gamma_case",
@@ -129,7 +129,7 @@
       ]
     },
     "sawedoff_limelight": {
-      "name":"sawed-off_limelight",
+      "name":"sawedoff_limelight",
       "skin":"Limelight",
       "rarity":3,
       "collection":"gamma_case",
@@ -161,7 +161,7 @@
       ]
     },
     "fiveseven_violent_daimyo": {
-      "name":"five-seven_violent_daimyo",
+      "name":"fiveseven_violent_daimyo",
       "skin":"Violent Daimyo",
       "rarity":2,
       "collection":"gamma_case",
@@ -177,7 +177,7 @@
       ]
     },
     "mac10_carnivore": {
-      "name":"mac-10_carnivore",
+      "name":"mac10_carnivore",
       "skin":"Carnivore",
       "rarity":2,
       "collection":"gamma_case",
@@ -225,7 +225,7 @@
       ]
     },
     "ppbizon_harvester": {
-      "name":"pp-bizon_harvester",
+      "name":"ppbizon_harvester",
       "skin":"Harvester",
       "rarity":2,
       "collection":"gamma_case",
@@ -241,7 +241,7 @@
       ]
     },
     "tec9_ice_cap": {
-      "name":"tec-9_ice_cap",
+      "name":"tec9_ice_cap",
       "skin":"Ice Cap",
       "rarity":2,
       "collection":"gamma_case",
