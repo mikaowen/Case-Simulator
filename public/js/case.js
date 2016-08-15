@@ -1,139 +1,124 @@
-cases = {};
-keys  = {};
 rollCaseName = "";
 rollItems = [];
 rollItemsST = [];
 inventoryItemPosition = -1;
 
-function Case(name, price, displayName, key, image, logo, collection, items) {
-	this.items = items;
-	this.collection = collection;
-	this.name = name;
-	this.logo = logo;
-	this.price = price;
-	this.key = key;
-	this.image = image;
-	this.displayName = displayName;
-	this.t = [[],[],[],[],[],[],[]];
-	inventoryCases[collection] = 0;
-	for (var i = 0; i < this.items.length; i++) {
-		switch(this.items[i].rarity) {
-			case 0:
-				this.t[0].push(this.items[i]);
-				break;
-			case 1:
-				this.t[1].push(this.items[i]);
-				break;
-			case 2:
-				this.t[2].push(this.items[i]);
-				break;
-			case 3:
-				this.t[3].push(this.items[i]);
-				break;
-			case 4:
-				this.t[4].push(this.items[i]);
-				break;
-			case 5:
-				this.t[5].push(this.items[i]);
-				break;
-			case 6:
-				this.t[6].push(this.items[i]);
-				break;
-			default:
-				throw new Error("Attempted to get item rarity value of '" + this.items[i].name + "'but found an invalid specifier");
-				return;
+function addItemToRollList(contents, skin, st) {
+	if (skin != null) {
+		rollItems.push(contents[skin]);
+		if (st != null) {
+			rollItemsST.push(st);
+		} else {
+			if (Math.random() <= 0.1 && contents[skin].statTrak == true) {
+				rollItemsST.push(true);
+			} else {
+				rollItemsST.push(false);
+			}
+		}
+	} else {
+    var t = [[],[],[],[],[]];
+		for (var key in contents) {
+			t[contents[key].rarity-2].splice(0, 0, contents[key].name);
+		}
+		var tier = 0;
+		var rand = Math.random();
+		if (rand <= 0.7879 ) {
+			tier = 0;
+		} else if (rand <= 0.9575) {
+			tier = 1;
+		} else if (rand <= 0.9857) {
+			tier = 2;
+		} else if (rand <= 0.9956) {
+			tier = 3;
+		} else {
+			tier = 4;
+		}
+
+    var skin = t[tier][Math.floor(Math.random() * t[tier].length)];
+		rollItems.push(contents[skin]);
+		if (st != null) {
+			rollItemsST.push(st);
+		} else {
+			if (Math.random() <= 0.1 && contents[skin].statTrak == true) {
+				rollItemsST.push(true);
+			} else {
+				rollItemsST.push(false);
+			}
 		}
 	}
-	cases[name] = this;
-}
-
-function Key(name, price, collection, displayName, image) {
-	this.name = name;
-	this.displayName = displayName;
-	this.collection = collection;
-	this.price = price;
-	this.image = image;
-	keys[name] = this;
-	inventoryKeys[collection] = 0;
-}
-
-function addItemToRollList() {
-	var t = 0;
-	var rand = Math.random();
-	if (rand <= 0.7879 ) {
-		t = 2;
-	} else if (rand <= 0.9575) {
-		t = 3;
-	} else if (rand <= 0.9857) {
-		t = 4;
-	} else if (rand <= 0.9956) {
-		t = 5;
-	} else {
-		t = 6;
-	}
-	var count = cases[rollCaseName].t[t].length;
-	var skin = cases[rollCaseName].t[t][Math.floor(Math.random() * count)];
-	if (Math.random() <= 0.1 && skin.statTrak == true)
-		rollItemsST.push(true);
-	else
-		rollItemsST.push(false);
-	rollItems.push(skin);
 }
 
 function rollCase() {
 	tab = "caseRoll";
 	window.setTimeout(function() {
-		if (cases[rollCaseName] == null) {
-			throw new Error("Attempted to find a case with the name '" + name + "' but it was not present");
-			return;
-		}
 		rollItems = [];
 		rollItemsST = [];
 		var display = document.getElementById("caseRollDisplay");
 		var divider = document.getElementById("caseRollDivider");
 		var text = "";
 		display.innerHTML="";
-		for (var i = 0; i < 40; i++) {
-			addItemToRollList();
-			text += "<div style='border:2px solid black; background-size:100% 100%; position:absolute; height:100%; top:0; left:"+
-			(i*((divider.offsetWidth-8)/3))+"px; width:"+((divider.offsetWidth-8)/3)+"px; background-image: url("+rollItems[i].image+
-			");'><img src='graphics/misc/transparent.png' class='caseST'></img></div>";
-		}
-		display.innerHTML=text;
-		for (var i = 0; i < 40; i++) {
-			switch(rollItems[i].rarity) {
-				case 0:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ccccb3";
-					break;
-				case 1:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#809fff";
-					break;
-				case 2:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#0066ff";
-					break;
-				case 3:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#a64dff";
-					break;
-				case 4:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ff4dc4";
-					break;
-				case 5:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ff0000";
-					break;
-				case 6:
-					document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ffff00";
-					break;
+		$.post("/get_case_contents", {"case":rollCaseName}, function(contents) {
+			for (var i = 0; i < 38; i++) {
+				addItemToRollList(contents);
+				text += "<div style='border:2px solid black; background-size:100% 100%; position:absolute; height:100%; top:0; left:"+
+				(i*((divider.offsetWidth-8)/3))+"px; width:"+((divider.offsetWidth-8)/3)+"px;'><img src='graphics/misc/transparent.png' class='caseST'></img></div>";
 			}
-			document.getElementById("caseRollDisplay").children[i].firstChild += ((i*display.firstChild.offsetWidth)+"px");
-			if (rollItemsST[i] == true)
-				document.getElementById("caseRollDisplay").children[i].firstChild.src = "graphics/misc/stattrak.png";
-		}
-		finishCase();
+			for (var i = 0; i < 2; i++) {
+				text += "<div style='border:2px solid black; background-size:100% 100%; position:absolute; height:100%; top:0; left:"+
+			  ((i+38)*((divider.offsetWidth-8)/3))+"px; width:"+((divider.offsetWidth-8)/3)+"px;'><img src='graphics/misc/transparent.png' class='caseST'></img></div>";
+			}
+
+      $.post("/unlock_case", {"user":"kek", "case":rollCaseName}, function(data) {
+        if (data != "err" && data != null) {
+				  addItemToRollList(contents, data.skin, data.st);
+          addItemToRollList(contents);
+  				console.log("Waiting for server response...");
+  				(function wait() {
+  					if (rollItems.length >= 40 && rollItemsST.length >= 40) {
+						  console.log("Got response from server!");
+						  display.innerHTML=text;
+						  for (var i = 0; i < 40; i++) {
+							display.children[i].style.backgroundImage = "url("+rollItems[i].image+")";
+
+								switch(rollItems[i].rarity) {
+									case 0:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ccccb3";
+										break;
+									case 1:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#809fff";
+										break;
+									case 2:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#0066ff";
+										break;
+									case 3:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#a64dff";
+										break;
+									case 4:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ff4dc4";
+										break;
+									case 5:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ff0000";
+										break;
+									case 6:
+										document.getElementById("caseRollDisplay").children[i].style.backgroundColor="#ffff00";
+										break;
+								}
+								document.getElementById("caseRollDisplay").children[i].firstChild += ((i*display.firstChild.offsetWidth)+"px");
+								if (rollItemsST[i] == true)
+									document.getElementById("caseRollDisplay").children[i].firstChild.src = "graphics/misc/stattrak.png";
+							}
+							finishCase();
+						} else {
+							setTimeout(wait, 500);
+  					}
+  				})();
+  			}
+  		});
+		});
 	},5);
 }
 
 function finishCase() {
-	addSkinToInventory(rollItems[rollItems.length-2], rollItemsST[rollItemsST.length-2]);
 	rollCaseName = "unknown";
 	var i = 0;
 	$("#caseRollDisplay div").animate({
@@ -142,19 +127,13 @@ function finishCase() {
 		i++;
 		if (i == 40) {
 			//inspectSkin(inventory[inventory.length-1]);
-			
 		}
 	});
 }
 
 function unlockCase() {
-	rollCaseName = inventory[inventoryItemPosition].name;
-	if (inventoryKeys[cases[rollCaseName].collection] < 1) {
-		return;
-	}
-	inventoryKeys[cases[rollCaseName].collection]--;
-	inventoryCases[cases[rollCaseName].collection]--;
-	inventory.splice(inventoryItemPosition, 1);
-	inventory.splice(inventory.indexOf(keys[cases[rollCaseName].key]), 1);
+	$.post("/get_inventory",{"user":"kek"}, function(inventory) {
+		rollCaseName = inventory[inventoryItemPosition].name;
+	});
 	tab = "unlockCase";
 }

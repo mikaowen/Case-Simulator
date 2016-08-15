@@ -1,6 +1,6 @@
 shopPage = 0;
 
-function drawShop() {
+/*function drawShop() {
 	var casesArray = Object.keys(cases);
 	for (var i = 1; i < 11; i++) {
 		var cn = (i > 5) ? 5+i : i;
@@ -10,7 +10,7 @@ function drawShop() {
 		document.getElementById("shop"+cn+"b").firstChild.style.display="none";
 		document.getElementById("shop"+kn+"b").firstChild.style.display="none";
 		document.getElementById("shop"+cn+"img").parentElement.children[1].innerHTML="";
-		document.getElementById("shop"+kn+"img").parentElement.children[1].innerHTML=""; 
+		document.getElementById("shop"+kn+"img").parentElement.children[1].innerHTML="";
 		document.getElementById("shop"+cn+"b").firstChild.innerHTML="";
 		document.getElementById("shop"+kn+"b").firstChild.innerHTML="";
 	}
@@ -114,4 +114,4 @@ subscribeEvent("money_change", function() {
 		else
 			document.getElementById("shop"+kn+"b").firstChild.disabled=false;
 	}
-});
+});*/
