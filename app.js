@@ -9,8 +9,7 @@ var MongoDBStore = require('connect-mongodb-session')(session);
 
 var store = new MongoDBStore({
   uri: process.env.mongouri,
-  collection: 'sessions',
-  stringify: true
+  collection: 'sessions'
 });
 
 var routes = require('./routes/index');
@@ -54,7 +53,7 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-//app.use(session(sess)) CHANGE BACK
+app.use(session(sess))
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
