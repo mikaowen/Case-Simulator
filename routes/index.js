@@ -53,10 +53,6 @@ router.post("/nav_json", function(req, res, next) {
   }
 });
 
-router.get('/login', function(req, res, next){
-  res.render('login', {})
-});
-
 router.post("/unlock_case", function(req, res, next) {
   if (!req.body.case || !req.body.user || !mainjson.cases[req.body.case]) {res.status(404).send();}
 
@@ -68,38 +64,32 @@ router.post("/unlock_case", function(req, res, next) {
 
       var collection = db.collection("users");
       collection.findOne({"username": req.body.user}, function(err, data){
-        if (data.money < mainjson.cases[req.body.case].price) {
-          console.log("User '" + req.body.user + "' does not enough money to unlock a '" + req.body.case + "'");
-          res.send(Error("Not enough money"));
+        var tier = [[],[],[],[],[]];
+        mainjson.cases[req.body.case].items.forEach(function(v){
+          tier[mainjson.skins[v].rarity-2].splice(0, 0, v);
+        });
+
+        var rand = Math.random();
+        if (rand <= 0.7879 ) {
+          tier = tier[0];
+        } else if (rand <= 0.9575) {
+          tier = tier[1];
+        } else if (rand <= 0.9857) {
+          tier = tier[2];
+        } else if (rand <= 0.9956) {
+          tier = tier[3];
         } else {
-          var tier = [[],[],[],[],[]];
-          mainjson.cases[req.body.case].items.forEach(function(v){
-            tier[mainjson.skins[v].rarity-2].splice(0, 0, v);
-          });
-
-          var rand = Math.random();
-          if (rand <= 0.7879 ) {
-            tier = tier[0];
-          } else if (rand <= 0.9575) {
-            tier = tier[1];
-          } else if (rand <= 0.9857) {
-            tier = tier[2];
-          } else if (rand <= 0.9956) {
-            tier = tier[3];
-          } else {
-            tier = tier[4];
-          }
-          var skin = tier[Math.floor(Math.random() * tier.length)];
-
-          var st = false;
-          if (Math.random() < 0.1) {
-            st = true;
-          }
-
-          addSkinToInventory(req.body.user, skin, null, st);
-          addMoney(req.body.user, mainjson.cases[req.body.case].price*-1);
-          res.send({skin:skin, st:st});
+          tier = tier[4];
         }
+        var skin = tier[Math.floor(Math.random() * tier.length)];
+
+        var st = false;
+        if (Math.random() < 0.1) {
+          st = true;
+        }
+
+        addSkinToInventory(req.body.user, skin, null, st);
+        res.send({skin:skin, st:st});
       });
       db.close();
     }
@@ -255,6 +245,70 @@ router.post("/get_skins_on_inventory_page", function(req, res, next) {
   });
 
 
+});
+
+/*
+PARAMETERS FOR /buy_shop_item:
+req.body.user: the user <string>
+req.body.item: the item (a skin, a case or a key) <string>
+if your item is a skin you will have 2 more required fields!
+  req.body.st: the stattrak value of the skin <boolean>
+  req.body.exterior: the exterior of the skin <string>
+*/
+router.post("/buy_shop_item", function(req, res, next) {
+  if ((!req.body.user || !req.body.item) || (req.body.item.type == "skin" && (req.body.st == null || req.body.exterior == null)) {
+    res.status(404).send();
+  } else {
+    MongoClient.connect(process.env.mongouri, function(err, db) {
+      if (err) {
+        console.log('Failed to establish connection with the database', err)
+      } else {
+        console.log("Connected correctly to server");
+
+        var item = "";
+        var price = 0;
+        if (req.body.item.type == "skin") {
+          item = mainjson.skins[req.body.item];
+          var st = 0;
+          if (req.body.st) {
+            st = 1;
+          }
+          var wear = 0;
+          if (req.body.exterior == "Minimal Wear") {
+            wear = 1;
+          } else if (req.body.exterior == "Field-Tested") {
+            wear = 2;
+          } else if (req.body.exterior == "Well-Worn") {
+            wear = 3;
+          } else if (req.body.exterior == "Battle-Scarred") {
+            wear = 4;
+          }
+          price = item.price[st][wear];
+        } else if (req.body.item.type == "key") {
+          item = mainjson.keys[req.body.item];
+          price = item.price;
+        } else if (req.body.item.type == "case") {
+          item = mainjson.cases[req.body.item];
+          price = item.price;
+        }
+
+        var collection = db.collection("users");
+        collection.findOne({"username": req.body.user}, function(err, data) {
+          if (err) {
+            res.status.send(500);
+          } else {
+            if (data.money < price) {
+              res.status(500).send()
+            } else {
+              if (item.type == "skin") {
+                addSkinToInventory(req.body.user, req.body.item, null);
+              }
+            }
+          }
+        });
+      }
+    });
+  }
 });
 
 
