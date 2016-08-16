@@ -4,9 +4,17 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-//var session = require('express-session') CHANGE BACK
+var session = require('express-session')
+var MongoDBStore = require('connect-mongodb-session')(session);
+
+var store = new MongoDBStore({
+  uri: process.env.mongouri,
+  collection: 'sessions',
+  stringify: true
+});
 
 var routes = require('./routes/index');
+var account = require('./routes/account');
 
 var app = express();
 
@@ -25,7 +33,10 @@ var sess = {
   secret: process.env.express_session_secret,
   resave: false,
   saveUninitialized:true,
-  cookie: {}
+  cookie: {
+    maxAge: 1000 * 60 * 60 * 24 * 7 // 1 week
+  },
+  store: store
 }
 
 if (app.get('env') === 'production') {
@@ -47,6 +58,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
+app.use('/account', account);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

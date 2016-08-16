@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 
-var MongoClient = require('mongodb').MongoClient
+var MongoClient = require('mongodb').MongoClient;
 
 var mainjson = require("../main.json");
 
@@ -53,52 +53,8 @@ router.post("/nav_json", function(req, res, next) {
   }
 });
 
-router.get('login', function(req, res, next){
+router.get('/login', function(req, res, next){
   res.render('login', {})
-});
-
-/*router.post('login', function(req, res, next){
-  MongoClient.connect(process.env.mongouri, function(err, db) {
-    if (err) {
-      console.log('u dun goofed: ', err)
-    } else {
-      console.log("Connected correctly to server");
-      var collection = db.collection('users');
-      collection.findOne({
-        "username": req.body.username,
-        "password": req.body.password,
-      },function(err, user) {
-        if(err) {
-          console.log(err);
-          res.status(500).send();
-        }
-
-        if (!user) {
-          res.status(404).send();
-        }
-        req.session.user = user
-      }
-      );
-    }
-  }
-});*/
-
-router.post('/newuser', function(req, res, next) {
-  MongoClient.connect(process.env.mongouri, function(err, db) {
-    if (err) {
-      console.log('u dun goofed: ', err)
-    } else {
-      console.log("Connected correctly to server");
-      var collection = db.collection('users');
-      collection.insertOne({
-        "username": req.body.username,
-        "password": req.body.password,
-      });
-    }
-    db.close();
-  });
-  if (!req.body.skins||!mainjson.skins[req.body.skin]) {res.status(404).send()}
-  res.send(mainjson.skins[req.body.skin]);
 });
 
 router.post("/unlock_case", function(req, res, next) {
