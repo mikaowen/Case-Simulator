@@ -311,5 +311,49 @@ router.post("/buy_shop_item", function(req, res, next) {
   }
 });
 
+router.post("/sell_item", function(req, res, next) {
+  if ((!req.body.user || !req.body.item) || (req.body.item.type == "skin" && (req.body.st == null || req.body.exterior == null)) {
+    res.status(404).send();
+  } else {
+    MongoClient.connect(process.env.mongouri, function(err, db) {
+      if (err) {
+        console.log('Failed to establish connection with the database', err)
+      } else {
+        console.log("Connected correctly to server");
+        var item = "";
+        var price = 0;
+        if (req.body.item.type == "skin") {
+          item = mainjson.skins[req.body.item];
+          var st = 0;
+          if (req.body.st) {
+            st = 1;
+          }
+          var wear = 0;
+          if (req.body.exterior == "Minimal Wear") {
+            wear = 1;
+          } else if (req.body.exterior == "Field-Tested") {
+            wear = 2;
+          } else if (req.body.exterior == "Well-Worn") {
+            wear = 3;
+          } else if (req.body.exterior == "Battle-Scarred") {
+            wear = 4;
+          }
+          price = item.price[st][wear];
+        } else if (req.body.item.type == "key") {
+          item = mainjson.keys[req.body.item];
+          price = item.price;
+        } else if (req.body.item.type == "case") {
+          item = mainjson.cases[req.body.item];
+          price = item.price;
+        }
+
+        var collection = db.collection("users");
+        collection.UpdateOne({"username": req.body.user}, {"money": price});
+        collection.UpdateOne({"username": req.body.user}, {inventory: $pull: {"name": item.name, "price": item.price, "flt": item.flt}});
+      }
+    });
+  }
+});
+
 
 module.exports = router;
