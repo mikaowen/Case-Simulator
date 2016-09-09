@@ -312,7 +312,7 @@ router.post("/buy_shop_item", function(req, res, next) {
 });
 
 router.post("/sell_item", function(req, res, next) {
-  if ((!req.body.user || !req.body.item) || (req.body.item.type == "skin" && (req.body.st == null || req.body.exterior == null)) {
+  if (!req.body.user || !req.body.item || !req.body.slot) {
     res.status(404).send();
   } else {
     MongoClient.connect(process.env.mongouri, function(err, db) {
@@ -320,7 +320,9 @@ router.post("/sell_item", function(req, res, next) {
         console.log('Failed to establish connection with the database', err)
       } else {
         console.log("Connected correctly to server");
-        var item = "";
+        var collection = db.collection("users");
+        var inventoryItem = collection.findOne({"username":req.body.user}, {inventory: {$slice: [0,1]}});
+        
         var price = 0;
         if (req.body.item.type == "skin") {
           item = mainjson.skins[req.body.item];
@@ -347,7 +349,6 @@ router.post("/sell_item", function(req, res, next) {
           price = item.price;
         }
 
-        var collection = db.collection("users");
         collection.UpdateOne({"username": req.body.user}, {"money": price});
         collection.UpdateOne({"username": req.body.user}, {inventory: $pull: {"name": item.name, "price": item.price, "flt": item.flt}});
       }
