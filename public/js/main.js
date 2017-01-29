@@ -1,7 +1,8 @@
 hoverElement = "";
 tab = "";
 hoverInventorySkin = 0;
-money = 0.00;
+money = 100.00;
+setInterval(function(){money+=1},1000);
 shopPrice = 0;
 eventBus = {
 	money_change:[],
@@ -38,7 +39,7 @@ setInterval(function() {
 			throw new Error("The tab variable has an invalid value.");
 			break;
 	}
-	
+
 	//Inventory tooltip
 	var tooltip = document.getElementById("tooltip");
 	if (tooltip != null && isNaN(Number(tooltip.innerHTML)) == false) {
@@ -71,7 +72,7 @@ setInterval(function() {
 					color = "black";
 					break;
 			}
-			
+
 			var stat = "";
 			var price = 0.00;
 			var prices = skin.skin.price[0];
@@ -79,7 +80,7 @@ setInterval(function() {
 				stat = "StatTrak ";
 				prices = skin.skin.price[1];
 			}
-			
+
 			//Looking up the price of the gun
 			switch(skin.exterior) {
 				case "Factory New":
@@ -100,9 +101,9 @@ setInterval(function() {
 				default:
 					throw new Error("A skin with an invalid exterior was found: "+skin.exterior);
 			}
-			
+
 			//The layout of the inventory tooltip being inserted into the HTML input stream via javascript
-			
+
 			var text = "<div class='row text-center' id='tooltipHeader'><text style='font-size:1em;'>"+stat+skin.skin.displayName+
 			"</text></div><div class='row text-left' style='width:100%;'><ul style='list-style-type:none; width:auto;'>"+
 			"<li><text>Weapon: "+skin.skin.gun+"</text></li><li><text>Skin: "+skin.skin.skin+
@@ -113,7 +114,7 @@ setInterval(function() {
 			"<div id='tooltipFloatDivider'><tbody><tr><td style='width:7%;'><text style='font-size:0.3em'>FN</text></td><td style='width:8%;'><text style='font-size:0.3em'>MW</text></td>"+
 			"<td style='width:23%;'><text>FT</text></td><td style='width:7%;'>"+
 			"<text style='font-size:0.2em'>WW</text></td><td style='width:55%;'><text>BS</text></td></tr></tbody></table></div>"
-			
+
 			//Editing the style of the elements via javascript
 			tooltip.innerHTML=text;
 			document.getElementById("tooltipHeader").style.backgroundColor=color;
@@ -146,7 +147,7 @@ setInterval(function() {
 			tooltip.style.padding="1em";
 		}
 	}
-	
+
 	//Unlock case tab
 	if (tab == "unlockCase") {
 		var caseUnlock = document.getElementById("unlockCase").children[0].children[0].children;
@@ -155,7 +156,7 @@ setInterval(function() {
 		caseUnlock[1].children[0].children[0].innerHTML=keys[cases[rollCaseName].key].displayName;
 		caseUnlock[1].children[2].children[0].innerHTML=cases[rollCaseName].displayName;
 	}
-	
+
 	if ((isHovered("#inventory img") || isHovered(".custom-menu")) && hoverElement != "") {
 		var i = Number(hoverElement.id.substring(3,5));
 		if (hoverElement.id.substring(4,5) == "i" || hoverElement.id.substring(4,5) == "s")
@@ -174,7 +175,7 @@ setInterval(function() {
 					var prices = skin.skin.price[0];
 					if (skin.st == true)
 						prices = skin.skin.price[1];
-						
+
 					//Looking up the price of the gun
 					switch(skin.exterior) {
 						case "Factory New":
